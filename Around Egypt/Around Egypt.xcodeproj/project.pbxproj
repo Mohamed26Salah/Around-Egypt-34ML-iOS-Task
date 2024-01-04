@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AB96548E2B46C5F00076FB93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96548D2B46C5F00076FB93 /* AppDelegate.swift */; };
 		AB9654902B46C5F00076FB93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96548F2B46C5F00076FB93 /* SceneDelegate.swift */; };
-		AB9654922B46C5F00076FB93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654912B46C5F00076FB93 /* ViewController.swift */; };
 		AB9654972B46C5F10076FB93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9654962B46C5F10076FB93 /* Assets.xcassets */; };
 		AB96549A2B46C5F10076FB93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB9654982B46C5F10076FB93 /* LaunchScreen.storyboard */; };
 		AB9654A52B46C5F20076FB93 /* Around_EgyptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654A42B46C5F20076FB93 /* Around_EgyptTests.swift */; };
@@ -24,6 +23,24 @@
 		AB9654CE2B46C7CD0076FB93 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB9654CD2B46C7CD0076FB93 /* RxRelay */; };
 		AB9654D02B46C7CD0076FB93 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB9654CF2B46C7CD0076FB93 /* RxSwift */; };
 		AB9654D22B46C7CD0076FB93 /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AB9654D12B46C7CD0076FB93 /* RxTest-Dynamic */; };
+		AB9654DC2B46C92C0076FB93 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654DA2B46C92C0076FB93 /* HomeViewController.swift */; };
+		AB9654DD2B46C92C0076FB93 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9654DB2B46C92C0076FB93 /* HomeViewController.xib */; };
+		AB9654E02B46C93D0076FB93 /* ExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654DE2B46C93D0076FB93 /* ExperienceViewController.swift */; };
+		AB9654E12B46C93D0076FB93 /* ExperienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9654DF2B46C93D0076FB93 /* ExperienceViewController.xib */; };
+		AB9654EA2B46CB590076FB93 /* SystemDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654E92B46CB590076FB93 /* SystemDesign.swift */; };
+		AB9654EC2B46CB620076FB93 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654EB2B46CB620076FB93 /* AppImages.swift */; };
+		AB9654EE2B46CB6A0076FB93 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654ED2B46CB6A0076FB93 /* AppColors.swift */; };
+		AB9654F02B46CB710076FB93 /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654EF2B46CB710076FB93 /* AppFonts.swift */; };
+		AB9654F32B46CEA30076FB93 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654F22B46CEA30076FB93 /* NetworkConstants.swift */; };
+		AB9654F52B46CEFA0076FB93 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654F42B46CEFA0076FB93 /* APIRouter.swift */; };
+		AB9654F72B46CF450076FB93 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654F62B46CF450076FB93 /* ServiceError.swift */; };
+		AB9654F92B46CF990076FB93 /* FailureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654F82B46CF990076FB93 /* FailureResponse.swift */; };
+		AB9654FB2B46CFBE0076FB93 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654FA2B46CFBE0076FB93 /* NetworkClient.swift */; };
+		AB9655012B46D0C50076FB93 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9655002B46D0C50076FB93 /* AuthRouter.swift */; };
+		AB9655042B46D65B0076FB93 /* AuthRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9655032B46D65B0076FB93 /* AuthRepo.swift */; };
+		AB9655072B46D72B0076FB93 /* BaseRepositry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9655062B46D72B0076FB93 /* BaseRepositry.swift */; };
+		AB9655092B46D9950076FB93 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9655082B46D9950076FB93 /* ResponseObject.swift */; };
+		AB96550B2B46E8C30076FB93 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96550A2B46E8C30076FB93 /* Experience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +64,6 @@
 		AB96548A2B46C5F00076FB93 /* Around Egypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Around Egypt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB96548D2B46C5F00076FB93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB96548F2B46C5F00076FB93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB9654912B46C5F00076FB93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AB9654962B46C5F10076FB93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB9654992B46C5F10076FB93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB96549B2B46C5F10076FB93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +72,28 @@
 		AB9654AA2B46C5F20076FB93 /* Around EgyptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Around EgyptUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9654AE2B46C5F20076FB93 /* Around_EgyptUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Around_EgyptUITests.swift; sourceTree = "<group>"; };
 		AB9654B02B46C5F20076FB93 /* Around_EgyptUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Around_EgyptUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AB9654DA2B46C92C0076FB93 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AB9654DB2B46C92C0076FB93 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		AB9654DE2B46C93D0076FB93 /* ExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceViewController.swift; sourceTree = "<group>"; };
+		AB9654DF2B46C93D0076FB93 /* ExperienceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceViewController.xib; sourceTree = "<group>"; };
+		AB9654E32B46CA840076FB93 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
+		AB9654E42B46CA840076FB93 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
+		AB9654E52B46CA840076FB93 /* Gotham-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold.otf"; sourceTree = "<group>"; };
+		AB9654E62B46CA840076FB93 /* Gotham-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Thin.otf"; sourceTree = "<group>"; };
+		AB9654E92B46CB590076FB93 /* SystemDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDesign.swift; sourceTree = "<group>"; };
+		AB9654EB2B46CB620076FB93 /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
+		AB9654ED2B46CB6A0076FB93 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		AB9654EF2B46CB710076FB93 /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		AB9654F22B46CEA30076FB93 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		AB9654F42B46CEFA0076FB93 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		AB9654F62B46CF450076FB93 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		AB9654F82B46CF990076FB93 /* FailureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailureResponse.swift; sourceTree = "<group>"; };
+		AB9654FA2B46CFBE0076FB93 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		AB9655002B46D0C50076FB93 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		AB9655032B46D65B0076FB93 /* AuthRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepo.swift; sourceTree = "<group>"; };
+		AB9655062B46D72B0076FB93 /* BaseRepositry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepositry.swift; sourceTree = "<group>"; };
+		AB9655082B46D9950076FB93 /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
+		AB96550A2B46E8C30076FB93 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +153,11 @@
 		AB96548C2B46C5F00076FB93 /* Around Egypt */ = {
 			isa = PBXGroup;
 			children = (
-				AB96548D2B46C5F00076FB93 /* AppDelegate.swift */,
-				AB96548F2B46C5F00076FB93 /* SceneDelegate.swift */,
-				AB9654912B46C5F00076FB93 /* ViewController.swift */,
+				AB9654D32B46C8640076FB93 /* Delegate */,
+				AB9655052B46D71C0076FB93 /* Core */,
+				AB9654F12B46CE830076FB93 /* Network */,
+				AB9654FE2B46D07A0076FB93 /* MainScene */,
+				AB9654D72B46C8B10076FB93 /* Resources */,
 				AB9654962B46C5F10076FB93 /* Assets.xcassets */,
 				AB9654982B46C5F10076FB93 /* LaunchScreen.storyboard */,
 				AB96549B2B46C5F10076FB93 /* Info.plist */,
@@ -140,6 +180,145 @@
 				AB9654B02B46C5F20076FB93 /* Around_EgyptUITestsLaunchTests.swift */,
 			);
 			path = "Around EgyptUITests";
+			sourceTree = "<group>";
+		};
+		AB9654D32B46C8640076FB93 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				AB96548D2B46C5F00076FB93 /* AppDelegate.swift */,
+				AB96548F2B46C5F00076FB93 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		AB9654D42B46C86E0076FB93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB9654D82B46C9010076FB93 /* Home */,
+				AB9654D92B46C9080076FB93 /* Experience */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB9654D52B46C8780076FB93 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AB9654D62B46C8800076FB93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB96550A2B46E8C30076FB93 /* Experience.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB9654D72B46C8B10076FB93 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB9654E22B46CA370076FB93 /* Fonts */,
+				AB9654E72B46CB070076FB93 /* Extenstions */,
+				AB9654E82B46CB0E0076FB93 /* SystemDesign */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AB9654D82B46C9010076FB93 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AB9654DA2B46C92C0076FB93 /* HomeViewController.swift */,
+				AB9654DB2B46C92C0076FB93 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AB9654D92B46C9080076FB93 /* Experience */ = {
+			isa = PBXGroup;
+			children = (
+				AB9654DE2B46C93D0076FB93 /* ExperienceViewController.swift */,
+				AB9654DF2B46C93D0076FB93 /* ExperienceViewController.xib */,
+			);
+			path = Experience;
+			sourceTree = "<group>";
+		};
+		AB9654E22B46CA370076FB93 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AB9654E42B46CA840076FB93 /* Gotham-Black.otf */,
+				AB9654E52B46CA840076FB93 /* Gotham-Bold.otf */,
+				AB9654E32B46CA840076FB93 /* Gotham-Light.otf */,
+				AB9654E62B46CA840076FB93 /* Gotham-Thin.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		AB9654E72B46CB070076FB93 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extenstions;
+			sourceTree = "<group>";
+		};
+		AB9654E82B46CB0E0076FB93 /* SystemDesign */ = {
+			isa = PBXGroup;
+			children = (
+				AB9654E92B46CB590076FB93 /* SystemDesign.swift */,
+				AB9654EB2B46CB620076FB93 /* AppImages.swift */,
+				AB9654ED2B46CB6A0076FB93 /* AppColors.swift */,
+				AB9654EF2B46CB710076FB93 /* AppFonts.swift */,
+			);
+			path = SystemDesign;
+			sourceTree = "<group>";
+		};
+		AB9654F12B46CE830076FB93 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AB9654F22B46CEA30076FB93 /* NetworkConstants.swift */,
+				AB9654F42B46CEFA0076FB93 /* APIRouter.swift */,
+				AB9655082B46D9950076FB93 /* ResponseObject.swift */,
+				AB9654F62B46CF450076FB93 /* ServiceError.swift */,
+				AB9654F82B46CF990076FB93 /* FailureResponse.swift */,
+				AB9654FA2B46CFBE0076FB93 /* NetworkClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AB9654FE2B46D07A0076FB93 /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				AB9655022B46D6500076FB93 /* Repo */,
+				AB9654FF2B46D0BA0076FB93 /* Router */,
+				AB9654D62B46C8800076FB93 /* Model */,
+				AB9654D52B46C8780076FB93 /* ViewModel */,
+				AB9654D42B46C86E0076FB93 /* View */,
+			);
+			path = MainScene;
+			sourceTree = "<group>";
+		};
+		AB9654FF2B46D0BA0076FB93 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				AB9655002B46D0C50076FB93 /* AuthRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		AB9655022B46D6500076FB93 /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				AB9655032B46D65B0076FB93 /* AuthRepo.swift */,
+			);
+			path = Repo;
+			sourceTree = "<group>";
+		};
+		AB9655052B46D71C0076FB93 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AB9655062B46D72B0076FB93 /* BaseRepositry.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +444,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB9654E12B46C93D0076FB93 /* ExperienceViewController.xib in Resources */,
 				AB96549A2B46C5F10076FB93 /* LaunchScreen.storyboard in Resources */,
 				AB9654972B46C5F10076FB93 /* Assets.xcassets in Resources */,
+				AB9654DD2B46C92C0076FB93 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,9 +472,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB9654922B46C5F00076FB93 /* ViewController.swift in Sources */,
+				AB9654F32B46CEA30076FB93 /* NetworkConstants.swift in Sources */,
+				AB9654F52B46CEFA0076FB93 /* APIRouter.swift in Sources */,
+				AB9655092B46D9950076FB93 /* ResponseObject.swift in Sources */,
+				AB96550B2B46E8C30076FB93 /* Experience.swift in Sources */,
+				AB9654EA2B46CB590076FB93 /* SystemDesign.swift in Sources */,
+				AB9654EC2B46CB620076FB93 /* AppImages.swift in Sources */,
 				AB96548E2B46C5F00076FB93 /* AppDelegate.swift in Sources */,
+				AB9654E02B46C93D0076FB93 /* ExperienceViewController.swift in Sources */,
+				AB9654F02B46CB710076FB93 /* AppFonts.swift in Sources */,
+				AB9654F92B46CF990076FB93 /* FailureResponse.swift in Sources */,
+				AB9654FB2B46CFBE0076FB93 /* NetworkClient.swift in Sources */,
+				AB9654F72B46CF450076FB93 /* ServiceError.swift in Sources */,
+				AB9655072B46D72B0076FB93 /* BaseRepositry.swift in Sources */,
+				AB9655012B46D0C50076FB93 /* AuthRouter.swift in Sources */,
+				AB9654EE2B46CB6A0076FB93 /* AppColors.swift in Sources */,
+				AB9655042B46D65B0076FB93 /* AuthRepo.swift in Sources */,
 				AB9654902B46C5F00076FB93 /* SceneDelegate.swift in Sources */,
+				AB9654DC2B46C92C0076FB93 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
