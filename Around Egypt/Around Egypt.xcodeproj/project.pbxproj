@@ -27,8 +27,6 @@
 		AB9654D22B46C7CD0076FB93 /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AB9654D12B46C7CD0076FB93 /* RxTest-Dynamic */; };
 		AB9654DC2B46C92C0076FB93 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654DA2B46C92C0076FB93 /* HomeViewController.swift */; };
 		AB9654DD2B46C92C0076FB93 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9654DB2B46C92C0076FB93 /* HomeViewController.xib */; };
-		AB9654E02B46C93D0076FB93 /* ExperienceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654DE2B46C93D0076FB93 /* ExperienceViewController.swift */; };
-		AB9654E12B46C93D0076FB93 /* ExperienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9654DF2B46C93D0076FB93 /* ExperienceViewController.xib */; };
 		AB9654EA2B46CB590076FB93 /* SystemDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654E92B46CB590076FB93 /* SystemDesign.swift */; };
 		AB9654EC2B46CB620076FB93 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654EB2B46CB620076FB93 /* AppImages.swift */; };
 		AB9654EE2B46CB6A0076FB93 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654ED2B46CB6A0076FB93 /* AppColors.swift */; };
@@ -44,6 +42,8 @@
 		AB9655092B46D9950076FB93 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9655082B46D9950076FB93 /* ResponseObject.swift */; };
 		AB96550B2B46E8C30076FB93 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96550A2B46E8C30076FB93 /* Experience.swift */; };
 		AB9FDDC02B472D5E00C5EA21 /* UIViewController + Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */; };
+		AB9FDDC22B47447C00C5EA21 /* ExperienceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */; };
+		AB9FDDC42B474E8300C5EA21 /* View + Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */; };
 		ABCA2D962B47115300F76066 /* ExperienceViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA2D952B47115300F76066 /* ExperienceViewModel .swift */; };
 /* End PBXBuildFile section */
 
@@ -80,8 +80,6 @@
 		AB9654B02B46C5F20076FB93 /* Around_EgyptUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Around_EgyptUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AB9654DA2B46C92C0076FB93 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AB9654DB2B46C92C0076FB93 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		AB9654DE2B46C93D0076FB93 /* ExperienceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceViewController.swift; sourceTree = "<group>"; };
-		AB9654DF2B46C93D0076FB93 /* ExperienceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceViewController.xib; sourceTree = "<group>"; };
 		AB9654E32B46CA840076FB93 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
 		AB9654E42B46CA840076FB93 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
 		AB9654E52B46CA840076FB93 /* Gotham-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold.otf"; sourceTree = "<group>"; };
@@ -102,6 +100,8 @@
 		AB96550A2B46E8C30076FB93 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		AB96550D2B46F8950076FB93 /* Gotham-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Regular.otf"; sourceTree = "<group>"; };
 		AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extenstions.swift"; sourceTree = "<group>"; };
+		AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceDetails.swift; sourceTree = "<group>"; };
+		AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extenstions.swift"; sourceTree = "<group>"; };
 		ABCA2D952B47115300F76066 /* ExperienceViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExperienceViewModel .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,8 +257,7 @@
 		AB9654D92B46C9080076FB93 /* Experience */ = {
 			isa = PBXGroup;
 			children = (
-				AB9654DE2B46C93D0076FB93 /* ExperienceViewController.swift */,
-				AB9654DF2B46C93D0076FB93 /* ExperienceViewController.xib */,
+				AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */,
 			);
 			path = Experience;
 			sourceTree = "<group>";
@@ -279,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */,
+				AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -474,7 +474,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB9654E12B46C93D0076FB93 /* ExperienceViewController.xib in Resources */,
 				AB96549A2B46C5F10076FB93 /* LaunchScreen.storyboard in Resources */,
 				AB9654972B46C5F10076FB93 /* Assets.xcassets in Resources */,
 				AB8E529B2B47229B009AF78E /* ExperienceCollectionViewCell.xib in Resources */,
@@ -506,17 +505,18 @@
 				AB9654F32B46CEA30076FB93 /* NetworkConstants.swift in Sources */,
 				AB9654F52B46CEFA0076FB93 /* APIRouter.swift in Sources */,
 				AB9655092B46D9950076FB93 /* ResponseObject.swift in Sources */,
+				AB9FDDC42B474E8300C5EA21 /* View + Extenstions.swift in Sources */,
 				AB96550B2B46E8C30076FB93 /* Experience.swift in Sources */,
 				ABCA2D962B47115300F76066 /* ExperienceViewModel .swift in Sources */,
 				AB9654EA2B46CB590076FB93 /* SystemDesign.swift in Sources */,
 				AB9654EC2B46CB620076FB93 /* AppImages.swift in Sources */,
 				AB96548E2B46C5F00076FB93 /* AppDelegate.swift in Sources */,
-				AB9654E02B46C93D0076FB93 /* ExperienceViewController.swift in Sources */,
 				AB9654F02B46CB710076FB93 /* AppFonts.swift in Sources */,
 				AB9654F92B46CF990076FB93 /* FailureResponse.swift in Sources */,
 				AB9654FB2B46CFBE0076FB93 /* NetworkClient.swift in Sources */,
 				AB9654F72B46CF450076FB93 /* ServiceError.swift in Sources */,
 				AB9655072B46D72B0076FB93 /* BaseRepositry.swift in Sources */,
+				AB9FDDC22B47447C00C5EA21 /* ExperienceDetails.swift in Sources */,
 				AB9655012B46D0C50076FB93 /* AuthRouter.swift in Sources */,
 				AB9654EE2B46CB6A0076FB93 /* AppColors.swift in Sources */,
 				AB9655042B46D65B0076FB93 /* AuthRepo.swift in Sources */,

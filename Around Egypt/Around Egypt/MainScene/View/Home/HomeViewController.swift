@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import SDWebImage
+import SwiftUI
 class HomeViewController: UIViewController {
     
     // MARK: - Variables -
@@ -117,7 +118,11 @@ extension HomeViewController {
                 guard let self = self else {
                     return
                 }
+                guard indexPath.row < experienceViewModel.experincesModel.count else {
+                        return // Ensure index is within bounds
+                }
                 let selectedExperience = experienceViewModel.experincesModel[indexPath.row]
+                showExperienceDetailsSheet(experience: selectedExperience)
                 
             })
             .disposed(by: disposeBag)
@@ -150,8 +155,11 @@ extension HomeViewController {
                 guard let self = self else {
                     return
                 }
+                guard indexPath.row < experienceViewModel.experincesModel.count else {
+                        return // Ensure index is within bounds
+                }
                 let selectedExperience = experienceViewModel.experincesModel[indexPath.row]
-                
+                showExperienceDetailsSheet(experience: selectedExperience)
             })
             .disposed(by: disposeBag)
     }
@@ -184,7 +192,7 @@ extension HomeViewController: UISearchBarDelegate  {
 //MARK: - Search Delegate -
 extension HomeViewController  {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //Hanlde if searchbar is empty
+        //Handle if searchbar is empty
         guard let searchText = searchBar.text, !searchText.isEmpty else {
             searchBar.resignFirstResponder()
             self.stackTobeHiddenWhenSearch.isHidden = false
@@ -192,7 +200,7 @@ extension HomeViewController  {
             return
         }
         
-        //Hanlde if searchbar if text are written
+        //Handle if searchbar if text are written
         experienceViewModel.mostRecentExperinces.accept([])
         self.stackTobeHiddenWhenSearch.isHidden = true
         experienceViewModel.getSearchedExperinces(query: searchText)
@@ -203,4 +211,13 @@ extension HomeViewController  {
     //        self.stackTobeHiddenWhenSearch.isHidden = false
     //        experienceViewModel.mostRecentExperinces.accept(experienceViewModel.experincesModel)
     //    }
+}
+
+//MARK: - Very Simple coordiantor -
+
+extension HomeViewController {
+    func showExperienceDetailsSheet(experience: Experience) {
+        let swiftUIController = UIHostingController(rootView: ExperienceDetails(experienceViewModel: experienceViewModel, experience: experience))
+        present(swiftUIController, animated: true, completion: nil)
+    }
 }
