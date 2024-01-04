@@ -44,6 +44,7 @@
 		AB9FDDC02B472D5E00C5EA21 /* UIViewController + Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */; };
 		AB9FDDC22B47447C00C5EA21 /* ExperienceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */; };
 		AB9FDDC42B474E8300C5EA21 /* View + Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */; };
+		AB9FDDC62B475CC600C5EA21 /* GeomtryReader + Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC52B475CC600C5EA21 /* GeomtryReader + Extenstion.swift */; };
 		ABCA2D962B47115300F76066 /* ExperienceViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA2D952B47115300F76066 /* ExperienceViewModel .swift */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extenstions.swift"; sourceTree = "<group>"; };
 		AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceDetails.swift; sourceTree = "<group>"; };
 		AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extenstions.swift"; sourceTree = "<group>"; };
+		AB9FDDC52B475CC600C5EA21 /* GeomtryReader + Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeomtryReader + Extenstion.swift"; sourceTree = "<group>"; };
 		ABCA2D952B47115300F76066 /* ExperienceViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExperienceViewModel .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -279,6 +281,7 @@
 			children = (
 				AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */,
 				AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */,
+				AB9FDDC52B475CC600C5EA21 /* GeomtryReader + Extenstion.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				AB9654EC2B46CB620076FB93 /* AppImages.swift in Sources */,
 				AB96548E2B46C5F00076FB93 /* AppDelegate.swift in Sources */,
 				AB9654F02B46CB710076FB93 /* AppFonts.swift in Sources */,
+				AB9FDDC62B475CC600C5EA21 /* GeomtryReader + Extenstion.swift in Sources */,
 				AB9654F92B46CF990076FB93 /* FailureResponse.swift in Sources */,
 				AB9654FB2B46CFBE0076FB93 /* NetworkClient.swift in Sources */,
 				AB9654F72B46CF450076FB93 /* ServiceError.swift in Sources */,

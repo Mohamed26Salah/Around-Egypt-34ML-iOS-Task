@@ -158,7 +158,7 @@ extension HomeViewController {
                 guard indexPath.row < experienceViewModel.experincesModel.count else {
                         return // Ensure index is within bounds
                 }
-                let selectedExperience = experienceViewModel.experincesModel[indexPath.row]
+                let selectedExperience = experienceViewModel.recommendedExperiences.value[indexPath.row]
                 showExperienceDetailsSheet(experience: selectedExperience)
             })
             .disposed(by: disposeBag)
@@ -213,7 +213,7 @@ extension HomeViewController  {
     //    }
 }
 
-//MARK: - Very Simple coordiantor -
+//MARK: - Very Very Simple coordiantor -
 
 extension HomeViewController {
     func showExperienceDetailsSheet(experience: Experience) {
