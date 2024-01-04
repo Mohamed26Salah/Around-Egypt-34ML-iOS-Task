@@ -8,6 +8,7 @@
 		<string>Gotham-Bold.otf</string>
 		<string>Gotham-Light.otf</string>
 		<string>Gotham-Thin.otf</string>
+		<string>Gotham-Regular.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

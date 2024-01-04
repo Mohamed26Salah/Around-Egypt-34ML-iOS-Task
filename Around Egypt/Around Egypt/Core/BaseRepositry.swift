@@ -7,12 +7,14 @@
 
 import Foundation
 import RxSwift
-
+import RxRelay
 class BaseRepository{
     var disposeBag: DisposeBag = .init()
     let networkClient:NetworkClient!
-    
+
     init(networkClient:NetworkClient) {
         self.networkClient = networkClient
     }
+    
 }
+
