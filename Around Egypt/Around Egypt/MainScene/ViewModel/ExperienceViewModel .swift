@@ -16,7 +16,6 @@ class ExperienceViewModel{
     var experincesModel: [Experience] = []
     var recommendedExperiences = BehaviorRelay<[Experience]>(value: [])
     var mostRecentExperinces = BehaviorRelay<[Experience]>(value: [])
-    var searchedExperinces = BehaviorRelay<[Experience]>(value: [])
     
     var errorSubject = PublishSubject<String>()
     var showLoading = BehaviorRelay<Bool>(value: false)
@@ -70,7 +69,7 @@ extension ExperienceViewModel {
                     return
                 }
                 self.showLoading.accept(false)
-                self.searchedExperinces.accept(response)
+                self.mostRecentExperinces.accept(response)
 
             }, onFailure: { error in
                 print("Error: \(error)")

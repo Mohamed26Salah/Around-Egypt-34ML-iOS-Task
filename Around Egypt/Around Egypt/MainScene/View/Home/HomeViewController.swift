@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
     // MARK: - Variables -
     @IBOutlet weak var recommendedExpCollectionView: UICollectionView!
     @IBOutlet weak var mostRecentExpCollectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var stackTobeHiddenWhenSearch: UIStackView!
     
     let experienceViewModel: ExperienceViewModel = ExperienceViewModel()
     let disposeBag = DisposeBag()
@@ -24,6 +26,7 @@ class HomeViewController: UIViewController {
         setupUI()
         bindDataToTableView()
         bindDataToCollectionView()
+        setupSearchBar()
     }
     
 }
@@ -49,7 +52,7 @@ extension HomeViewController {
 extension HomeViewController {
     private func setupMostRecentExpCollectionView() {
         mostRecentExpCollectionView.register(ExperienceCollectionViewCell.nib(),
-                                              forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
+                                             forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
         mostRecentExpCollectionView.delegate = self
     }
     
@@ -73,13 +76,13 @@ extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         centerCellOnScreen()
     }
-
+    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             centerCellOnScreen()
         }
     }
-
+    
     private func centerCellOnScreen() {
         let centerPoint = CGPoint(x: recommendedExpCollectionView.contentOffset.x + recommendedExpCollectionView.bounds.width / 2,
                                   y: recommendedExpCollectionView.bounds.height / 2)
@@ -122,7 +125,7 @@ extension HomeViewController {
     
 }
 
-// MARK: - RxSwift - CollectionView
+// MARK: - RxSwift - CollectionView - Recommened -
 
 extension HomeViewController {
     func bindDataToCollectionView() {
@@ -154,3 +157,50 @@ extension HomeViewController {
     }
 }
 
+// MARK: - Setup Search Bar -
+
+extension HomeViewController: UISearchBarDelegate  {
+    private func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.backgroundImage = UIImage()
+        
+        if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
+            textFieldInsideSearchBar.textColor = .black
+            let placeholderText = "Try \"Luxor\""
+            let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+            textFieldInsideSearchBar.attributedPlaceholder = attributedPlaceholder
+        }
+        
+        // Change the search icon (magnifying glass) color
+        if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
+            if let leftView = textFieldInsideSearchBar.leftView as? UIImageView {
+                leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
+                leftView.tintColor = .gray
+            }
+        }
+    }
+}
+
+//MARK: - Search Delegate -
+extension HomeViewController  {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //Hanlde if searchbar is empty
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            searchBar.resignFirstResponder()
+            self.stackTobeHiddenWhenSearch.isHidden = false
+            experienceViewModel.mostRecentExperinces.accept(experienceViewModel.experincesModel)
+            return
+        }
+        
+        //Hanlde if searchbar if text are written
+        experienceViewModel.mostRecentExperinces.accept([])
+        self.stackTobeHiddenWhenSearch.isHidden = true
+        experienceViewModel.getSearchedExperinces(query: searchText)
+    }
+    //    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    //        searchBar.text = nil // Clear the search text
+    //        searchBar.resignFirstResponder() // Dismiss the keyboard
+    //        self.stackTobeHiddenWhenSearch.isHidden = false
+    //        experienceViewModel.mostRecentExperinces.accept(experienceViewModel.experincesModel)
+    //    }
+}
