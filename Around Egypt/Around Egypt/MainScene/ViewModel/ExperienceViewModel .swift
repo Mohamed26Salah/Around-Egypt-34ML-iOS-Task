@@ -16,15 +16,22 @@ class ExperienceViewModel{
     var experincesModel: [Experience] = []
     var recommendedExperiences = BehaviorRelay<[Experience]>(value: [])
     var mostRecentExperinces = BehaviorRelay<[Experience]>(value: [])
+    var searchedExperinces = BehaviorRelay<[Experience]>(value: [])
     
     var errorSubject = PublishSubject<String>()
     var showLoading = BehaviorRelay<Bool>(value: false)
+    
+    init() {
+        getMostRecentExperinces()
+        getRecommendedExperiences()
+    }
 }
 
 //MARK: API Calls
 
 extension ExperienceViewModel {
     func getRecommendedExperiences() {
+        self.showLoading.accept(true)
         experienceRepo.getRecommendedExperiences()
             .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] response in
@@ -39,6 +46,7 @@ extension ExperienceViewModel {
             .disposed(by: disposeBag)
     }
     func getMostRecentExperinces() {
+        self.showLoading.accept(true)
         experienceRepo.getRecentExperiences()
             .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] response in
@@ -54,4 +62,21 @@ extension ExperienceViewModel {
             })
             .disposed(by: disposeBag)
     }
+    func getSearchedExperinces(query: String) {
+        experienceRepo.getSearchExperiences(searchText: query)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onSuccess: { [weak self] response in
+                guard let self = self else {
+                    return
+                }
+                self.showLoading.accept(false)
+                self.searchedExperinces.accept(response)
+
+            }, onFailure: { error in
+                print("Error: \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
 }
+
+//MARK: Search
