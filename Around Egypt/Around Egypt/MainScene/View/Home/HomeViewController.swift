@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        authRepo.getSearchExperiences(searchText: "Aswan")
+        authRepo.getLikeAnExperience(id: "7f209d18-36a1-44d5-a0ed-b7eddfad48d6")
             .observe(on: MainScheduler.instance)
             .subscribe(onSuccess: { [weak self] response in
                 guard let self = self else {

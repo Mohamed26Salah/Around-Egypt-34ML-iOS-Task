@@ -14,7 +14,7 @@ protocol ExperiencesRepoProtocol {
     func getSearchExperiences(searchText: String)->Single<([Experience])>
     func getSingleExperience(id: String)->Single<(Experience)>
     //Needs to be edited the last one
-    func getLikeAnExperience(id: String)->Single<([Experience])>
+    func getLikeAnExperience(id: String)->Single<(Int)>
 
 
 }
@@ -100,10 +100,10 @@ class ExperienceRepo: BaseRepository, ExperiencesRepoProtocol{
         }
     }
     
-    func getLikeAnExperience(id: String) -> RxSwift.Single<([Experience])> {
+    func getLikeAnExperience(id: String) -> RxSwift.Single<(Int)> {
         return Single.create{[weak self] observer -> Disposable in
             guard let self = self else{return Disposables.create()}
-            self.networkClient.performRequest([Experience].self
+            self.networkClient.performRequest(Int.self
                                               , router: AuthRouter.LikeAnExperience(id: id))
                 .subscribe { (response) in
                     if (response.meta.errors.isEmpty) {
