@@ -13,7 +13,7 @@ import Network
 class ExperienceViewModel{
     
     let disposeBag = DisposeBag()
-    let experienceRepo = ExperienceRepo(networkClient: NetworkClient())
+    let experienceRepo: ExperiencesRepoProtocol
     
     var experincesModel: [Experience] = []
     var recommendedExperiences = BehaviorRelay<[Experience]>(value: [])
@@ -25,10 +25,11 @@ class ExperienceViewModel{
     
     var updateLikeCount: (() -> Void)?
     
-    init() {
+    init(experienceRepo: ExperiencesRepoProtocol = ExperienceRepo(networkClient: NetworkClient())) {
+        self.experienceRepo = experienceRepo
         getMostRecentExperinces()
         getRecommendedExperiences()
-        print(LocalDataManager.shared().returnDataBaseURL())
+//        print(LocalDataManager.shared().returnDataBaseURL())
     }
 }
 

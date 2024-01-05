@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Datum
-struct Experience: Codable {
+struct Experience: Codable, Equatable {
     var id: String
     var title: String
     var coverPhoto: String
@@ -33,7 +33,11 @@ struct Experience: Codable {
 //        case isLiked = "is_liked"
     }
 }
-
+extension Experience {
+    static var mock: Experience {
+        return Experience(id: "", title: "", coverPhoto: "", description: "", viewsNo: 0, likesNo: 0, address: "", recommended: 0)
+    }
+}
 
 // MARK: - Meta
 struct Meta: Codable {

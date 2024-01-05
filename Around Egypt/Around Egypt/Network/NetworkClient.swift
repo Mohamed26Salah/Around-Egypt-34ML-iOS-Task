@@ -29,7 +29,12 @@ struct DataAll : Decodable {
     }
    
 }
-class NetworkClient {
+protocol NetworkClientProtocol {
+    func performRequest<T: Decodable>(_ object: T.Type, router: APIRouter) -> Single<ResponseObject<T>> where T: Decodable
+    func performRequestMultiPart<T:Decodable>(with decoded:T.Type, router: APIRouter,fileName:String,fileData:Data?) -> Single<ResponseObject<T>> where T : Decodable
+    func handleResponse<T:Decodable>(urlPath:String,response:DataResponse<T,AFError>,returnWithData:@escaping(T?)->(),returnError:@escaping(Error?)->())
+}
+class NetworkClient: NetworkClientProtocol {
     
     func performRequest<T: Decodable>(_ object: T.Type, router: APIRouter) -> Single<ResponseObject<T>> where T : Decodable {
         return Single.create { (observer) -> Disposable in

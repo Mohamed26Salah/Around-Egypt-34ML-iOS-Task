@@ -10,9 +10,9 @@ import RxSwift
 import RxRelay
 class BaseRepository{
     var disposeBag: DisposeBag = .init()
-    let networkClient:NetworkClient!
+    let networkClient:NetworkClientProtocol!
 
-    init(networkClient:NetworkClient) {
+    init(networkClient:NetworkClientProtocol) {
         self.networkClient = networkClient
     }
     

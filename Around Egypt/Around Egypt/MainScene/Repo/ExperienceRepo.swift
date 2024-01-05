@@ -13,10 +13,7 @@ protocol ExperiencesRepoProtocol {
     func getRecentExperiences()->Single<([Experience])>
     func getSearchExperiences(searchText: String)->Single<([Experience])>
     func getSingleExperience(id: String)->Single<(Experience)>
-    //Needs to be edited the last one
     func likeAnExperience(id: String)->Single<(Int)>
-
-
 }
 
 class ExperienceRepo: BaseRepository, ExperiencesRepoProtocol{
