@@ -11,7 +11,7 @@ class ExperienceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var watchCountLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeButton: RadioButton!
     @IBOutlet weak var experienceTitleLabel: UILabel!
     
     var likesButtonTapped: (() -> Void)?
@@ -21,7 +21,7 @@ class ExperienceCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    @IBAction func likeButtonTapped(_ sender: UIButton) {
+    @IBAction func liekButtonTapped(_ sender: RadioButton) {
         likesButtonTapped?()
     }
     

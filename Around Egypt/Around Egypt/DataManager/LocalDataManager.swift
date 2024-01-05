@@ -197,7 +197,16 @@ class LocalDataManager {
         
         return allExperiences
     }
-
+    
+    //MARK: - Get A Single Experiences -
+    
+    func getExperienceByID(id: String) -> Experience? {
+            let realm = try! Realm()
+            if let localExperience = realm.object(ofType: LocalExperience.self, forPrimaryKey: id) {
+                return convertFromLocalToApi(localExperience: localExperience)
+            }
+            return nil
+        }
     
     //MARK: - Get All Recommended Experiences -
     

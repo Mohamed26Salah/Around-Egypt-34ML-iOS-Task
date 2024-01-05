@@ -23,6 +23,8 @@ class ExperienceViewModel{
     var showLoading = BehaviorRelay<Bool>(value: false)
     var isThierAnError = BehaviorRelay<Bool>(value: true)
     
+    var updateLikeCount: (() -> Void)?
+    
     init() {
         getMostRecentExperinces()
         getRecommendedExperiences()
@@ -82,6 +84,19 @@ extension ExperienceViewModel {
                 }
                 self.showLoading.accept(false)
                 self.mostRecentExperinces.accept(response)
+
+            }, onFailure: { error in
+                print("Error: \(error)")
+            })
+            .disposed(by: disposeBag)
+    }
+    func likeAnExperience(experienceID: String) {
+        experienceRepo.likeAnExperience(id: experienceID)
+            .subscribe(onSuccess: { [weak self] response in
+                guard let self = self else {
+                    return
+                }
+                print("Your Experince is Liked")
 
             }, onFailure: { error in
                 print("Error: \(error)")

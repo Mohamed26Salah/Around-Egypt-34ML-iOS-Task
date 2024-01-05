@@ -220,7 +220,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWp-RK-QJ7">
                                                                 <rect key="frame" x="79.333333333333314" y="0.0" width="34" height="29"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHh-Ip-HHE">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHh-Ip-HHE" customClass="RadioButton" customModule="Around_Egypt" customModuleProvider="target">
                                                                         <rect key="frame" x="4.3333333333333144" y="2" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="tgT-vJ-SYa"/>
@@ -232,7 +232,7 @@
                                                                             <backgroundConfiguration key="background"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="likeButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="94i-2Z-vRy"/>
+                                                                            <action selector="liekButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="OXQ-ok-Ayc"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -288,7 +288,7 @@
             <connections>
                 <outlet property="coverImage" destination="Ed8-ER-k05" id="z6H-hV-d9K"/>
                 <outlet property="experienceTitleLabel" destination="dLr-g2-GUV" id="cuD-fg-9cK"/>
-                <outlet property="likeButton" destination="lHh-Ip-HHE" id="5Hl-bL-G5i"/>
+                <outlet property="likeButton" destination="lHh-Ip-HHE" id="LwH-U1-A9v"/>
                 <outlet property="likesCountLabel" destination="Gqk-fS-Slm" id="izM-UU-Ayo"/>
                 <outlet property="watchCountLabel" destination="YQo-MC-dqa" id="Ysq-tB-zp4"/>
             </connections>

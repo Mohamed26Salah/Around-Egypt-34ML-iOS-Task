@@ -33,17 +33,17 @@ class NetworkClient {
     
     func performRequest<T: Decodable>(_ object: T.Type, router: APIRouter) -> Single<ResponseObject<T>> where T : Decodable {
         return Single.create { (observer) -> Disposable in
-            Logging("=====\(String(describing: router.urlRequest))")
+//            Logging("=====\(String(describing: router.urlRequest))")
             AF.request(router)
                 .responseDecodable(of: ResponseObject<T>.self) { (response) in
                     switch response.result {
                     case .success(let responseObject):
-                        PrintHelper.logNetwork("""
-                            ✅ Response: \(response.request?.httpMethod?.uppercased() ?? "") '\(String(describing: router.urlRequest))':
-                            🧾 Status Code: \(response.response?.statusCode ?? 0), 💾 \(response.data ?? Data()), ⏳ time: \(Date().timeIntervalSince(Date()))
-                            ⬇️ Response headers = \(response.response?.allHeaderFields.json ?? "No Headers")
-                            ⬇️ Response Body = \(String(data: response.data ?? Data(), encoding: String.Encoding.utf8) ?? "")
-                            """ )
+//                        PrintHelper.logNetwork("""
+//                            ✅ Response: \(response.request?.httpMethod?.uppercased() ?? "") '\(String(describing: router.urlRequest))':
+//                            🧾 Status Code: \(response.response?.statusCode ?? 0), 💾 \(response.data ?? Data()), ⏳ time: \(Date().timeIntervalSince(Date()))
+//                            ⬇️ Response headers = \(response.response?.allHeaderFields.json ?? "No Headers")
+//                            ⬇️ Response Body = \(String(data: response.data ?? Data(), encoding: String.Encoding.utf8) ?? "")
+//                            """ )
                         observer(.success(responseObject))
                     case .failure(let error):
                         Logging(error.localizedDescription)

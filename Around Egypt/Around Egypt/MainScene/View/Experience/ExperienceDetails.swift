@@ -10,9 +10,10 @@ import SDWebImageSwiftUI
 
 struct ExperienceDetails: View {
     @State var width: CGFloat = .zero
+    @State var isLiked: Bool = false
+    
     let experienceViewModel: ExperienceViewModel
     let experience: Experience
-    
     var body: some View {
         //        ScrollView {
         VStack {
@@ -52,9 +53,21 @@ struct ExperienceDetails: View {
                     Spacer()
                     Image(systemName: "square.and.arrow.up")
                         .foregroundStyle(.red)
-                    Image(systemName: "heart")
-                        .foregroundStyle(.red)
-                    Text(String(experience.likesNo))
+                    Button(action: {
+                        withAnimation {
+                            isLiked = true
+                        }
+                        LocalDataManager.shared().likeExperience(experienceID: experience.id)
+                        if let updateLikeCountClosure = experienceViewModel.updateLikeCount {
+                            updateLikeCountClosure()
+                        }
+                        
+                    }, label: {
+                        Image(systemName: isLiked ? "heart.fill" : "heart" )
+                            .foregroundStyle(.red)
+                    })
+                    .disabled(isLiked)
+                    Text(String(LocalDataManager.shared().getExperienceByID(id: experience.id)?.likesNo ?? experience.likesNo))
                 }
                 HStack {
                     Text(experience.address)
@@ -80,6 +93,9 @@ struct ExperienceDetails: View {
         }
         .background(.white)
         .getWidth($width)
+        .onAppear {
+            isLiked = LocalDataManager.shared().isExperienceLiked(experienceID: experience.id)
+        }
     }
     @ViewBuilder
     private func getImage() -> some View {

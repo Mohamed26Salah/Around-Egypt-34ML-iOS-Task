@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
         bindDataToTableView()
         bindDataToCollectionView()
         setupSearchBar()
+        updateLikesCountFromExperienceDetails()
     }
     
 }
@@ -115,11 +116,22 @@ extension HomeViewController {
                         }
                     }
                 }
-                cell.likesCountLabel.text = String(row.likesNo)
+                
                 cell.experienceTitleLabel.text = row.title
                 cell.watchCountLabel.text = String(row.viewsNo)
+                
+                //Manage Like Button
+                let likesCount = LocalDataManager.shared().getExperienceByID(id: row.id)?.likesNo
+                let isLiked = LocalDataManager.shared().isExperienceLiked(experienceID: row.id)
+                
+                cell.likesCountLabel.text = String(likesCount ?? row.likesNo)
+                cell.likeButton.isChecked = isLiked
+                cell.likeButton.isEnabled = !isLiked
                 cell.likesButtonTapped = {
-                    print("Likes Button Tapped")
+                    LocalDataManager.shared().likeExperience(experienceID: row.id)
+                    self.experienceViewModel.likeAnExperience(experienceID: row.id)
+                    self.mostRecentExpCollectionView.reloadData()
+                    self.recommendedExpCollectionView.reloadData()
                 }
             }
             .disposed(by: disposeBag)
@@ -164,12 +176,23 @@ extension HomeViewController {
                         }
                     }
                 }
-                cell.likesCountLabel.text = String(row.likesNo)
                 cell.experienceTitleLabel.text = row.title
                 cell.watchCountLabel.text = String(row.viewsNo)
+                
+                //Manage Like Button
+                let likesCount = LocalDataManager.shared().getExperienceByID(id: row.id)?.likesNo
+                let isLiked = LocalDataManager.shared().isExperienceLiked(experienceID: row.id)
+                
+                cell.likesCountLabel.text = String(likesCount ?? row.likesNo)
+                cell.likeButton.isChecked = isLiked
+                cell.likeButton.isEnabled = !isLiked
                 cell.likesButtonTapped = {
-                    print("Likes Button Tapped")
+                    LocalDataManager.shared().likeExperience(experienceID: row.id)
+                    self.experienceViewModel.likeAnExperience(experienceID: row.id)
+                    self.recommendedExpCollectionView.reloadData()
+                    self.mostRecentExpCollectionView.reloadData()
                 }
+                
             }
             .disposed(by: disposeBag)
         
@@ -242,5 +265,17 @@ extension HomeViewController {
     func showExperienceDetailsSheet(experience: Experience) {
         let swiftUIController = UIHostingController(rootView: ExperienceDetails(experienceViewModel: experienceViewModel, experience: experience))
         present(swiftUIController, animated: true, completion: nil)
+    }
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+           print("Sheet has been dismissed.")
+       }
+}
+
+extension HomeViewController {
+    func updateLikesCountFromExperienceDetails() {
+        experienceViewModel.updateLikeCount = {
+            self.recommendedExpCollectionView.reloadData()
+            self.mostRecentExpCollectionView.reloadData()
+        }
     }
 }

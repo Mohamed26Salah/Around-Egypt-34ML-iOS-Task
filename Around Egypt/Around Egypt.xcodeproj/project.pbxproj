@@ -41,6 +41,7 @@
 		AB9655072B46D72B0076FB93 /* BaseRepositry.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9655062B46D72B0076FB93 /* BaseRepositry.swift */; };
 		AB9655092B46D9950076FB93 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9655082B46D9950076FB93 /* ResponseObject.swift */; };
 		AB96550B2B46E8C30076FB93 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96550A2B46E8C30076FB93 /* Experience.swift */; };
+		AB9EF8CF2B48402B003C9CE0 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9EF8CE2B48402B003C9CE0 /* RadioButton.swift */; };
 		AB9FDDC02B472D5E00C5EA21 /* UIViewController + Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */; };
 		AB9FDDC22B47447C00C5EA21 /* ExperienceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */; };
 		AB9FDDC42B474E8300C5EA21 /* View + Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */; };
@@ -104,6 +105,7 @@
 		AB9655082B46D9950076FB93 /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
 		AB96550A2B46E8C30076FB93 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		AB96550D2B46F8950076FB93 /* Gotham-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Regular.otf"; sourceTree = "<group>"; };
+		AB9EF8CE2B48402B003C9CE0 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extenstions.swift"; sourceTree = "<group>"; };
 		AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceDetails.swift; sourceTree = "<group>"; };
 		AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extenstions.swift"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		AB9654D42B46C86E0076FB93 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB9EF8CD2B484019003C9CE0 /* ReusableView */,
 				ABCA2D8C2B46FECB00F76066 /* Cell */,
 				AB9654D82B46C9010076FB93 /* Home */,
 				AB9654D92B46C9080076FB93 /* Experience */,
@@ -355,6 +358,14 @@
 				AB9655062B46D72B0076FB93 /* BaseRepositry.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		AB9EF8CD2B484019003C9CE0 /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				AB9EF8CE2B48402B003C9CE0 /* RadioButton.swift */,
+			);
+			path = ReusableView;
 			sourceTree = "<group>";
 		};
 		AB9FDDC92B476B6C00C5EA21 /* DataManager */ = {
@@ -540,6 +551,7 @@
 				AB9FDDC62B475CC600C5EA21 /* GeomtryReader + Extenstion.swift in Sources */,
 				AB9654F92B46CF990076FB93 /* FailureResponse.swift in Sources */,
 				AB9654FB2B46CFBE0076FB93 /* NetworkClient.swift in Sources */,
+				AB9EF8CF2B48402B003C9CE0 /* RadioButton.swift in Sources */,
 				AB9FDDC82B476A0A00C5EA21 /* test.swift in Sources */,
 				AB9654F72B46CF450076FB93 /* ServiceError.swift in Sources */,
 				AB9655072B46D72B0076FB93 /* BaseRepositry.swift in Sources */,
