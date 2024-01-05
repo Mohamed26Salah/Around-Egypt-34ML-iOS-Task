@@ -15,29 +15,11 @@ struct Experience: Codable {
     var description: String
     var viewsNo: Int
     var likesNo: Int
-    var recommended: Int
-    var hasVideo: Int
-    var tags: [City]
-    var city: City
-    var tourHTML: String
-    var famousFigure: String
-    var period: Era?
-    var era: Era?
-    var founded: String
-    var detailedDescription: String
     var address: String
-    var gmapLocation: GmapLocation
-    var openingHours: OpeningHoursUnion
-    var translatedOpeningHours: TranslatedOpeningHours
-    var startingPrice: Int?
-    var ticketPrices: [TicketPrice]
-    var experienceTips: [JSONAny]
-    var isLiked: JSONNull?
-    var reviews: [JSONAny]
-    var rating: Int
-    var reviewsNo: Int
-    var audioURL: String
-    var hasAudio: Bool
+    var recommended: Int
+    
+//    var isLiked: Bool?
+
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -46,178 +28,12 @@ struct Experience: Codable {
         case description = "description"
         case viewsNo = "views_no"
         case likesNo = "likes_no"
-        case recommended = "recommended"
-        case hasVideo = "has_video"
-        case tags = "tags"
-        case city = "city"
-        case tourHTML = "tour_html"
-        case famousFigure = "famous_figure"
-        case period = "period"
-        case era = "era"
-        case founded = "founded"
-        case detailedDescription = "detailed_description"
         case address = "address"
-        case gmapLocation = "gmap_location"
-        case openingHours = "opening_hours"
-        case translatedOpeningHours = "translated_opening_hours"
-        case startingPrice = "starting_price"
-        case ticketPrices = "ticket_prices"
-        case experienceTips = "experience_tips"
-        case isLiked = "is_liked"
-        case reviews = "reviews"
-        case rating = "rating"
-        case reviewsNo = "reviews_no"
-        case audioURL = "audio_url"
-        case hasAudio = "has_audio"
+        case recommended = "recommended"
+//        case isLiked = "is_liked"
     }
 }
 
-// MARK: - City
-struct City: Codable {
-    var id: Int
-    var name: String
-    var disable: JSONNull?
-    var topPick: Int
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case name = "name"
-        case disable = "disable"
-        case topPick = "top_pick"
-    }
-}
-
-// MARK: - Era
-struct Era: Codable {
-    var id: String
-    var value: String
-    var createdAt: String
-    var updatedAt: String
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case value = "value"
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-    }
-}
-
-// MARK: - GmapLocation
-struct GmapLocation: Codable {
-    var type: TypeEnum
-    var coordinates: [Double]
-
-    enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case coordinates = "coordinates"
-    }
-}
-
-enum TypeEnum: String, Codable {
-    case point = "Point"
-}
-
-enum OpeningHoursUnion: Codable {
-    case anythingArray([JSONAny])
-    case openingHoursClass(OpeningHoursClass)
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let x = try? container.decode([JSONAny].self) {
-            self = .anythingArray(x)
-            return
-        }
-        if let x = try? container.decode(OpeningHoursClass.self) {
-            self = .openingHoursClass(x)
-            return
-        }
-        throw DecodingError.typeMismatch(OpeningHoursUnion.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for OpeningHoursUnion"))
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .anythingArray(let x):
-            try container.encode(x)
-        case .openingHoursClass(let x):
-            try container.encode(x)
-        }
-    }
-}
-
-// MARK: - OpeningHoursClass
-struct OpeningHoursClass: Codable {
-    var sunday: [String]
-    var monday: [String]
-    var tuesday: [String]
-    var wednesday: [String]
-    var thursday: [String]
-    var friday: [String]
-    var saturday: [String]
-
-    enum CodingKeys: String, CodingKey {
-        case sunday = "sunday"
-        case monday = "monday"
-        case tuesday = "tuesday"
-        case wednesday = "wednesday"
-        case thursday = "thursday"
-        case friday = "friday"
-        case saturday = "saturday"
-    }
-}
-
-// MARK: - TicketPrice
-struct TicketPrice: Codable {
-    var type: String
-    var price: Int
-
-    enum CodingKeys: String, CodingKey {
-        case type = "type"
-        case price = "price"
-    }
-}
-
-// MARK: - TranslatedOpeningHours
-struct TranslatedOpeningHours: Codable {
-    var sunday: FridayClass?
-    var monday: FridayClass?
-    var tuesday: FridayClass?
-    var wednesday: FridayClass?
-    var thursday: FridayClass?
-    var friday: FridayClass?
-    var saturday: FridayClass?
-
-    enum CodingKeys: String, CodingKey {
-        case sunday = "sunday"
-        case monday = "monday"
-        case tuesday = "tuesday"
-        case wednesday = "wednesday"
-        case thursday = "thursday"
-        case friday = "friday"
-        case saturday = "saturday"
-    }
-}
-
-// MARK: - FridayClass
-struct FridayClass: Codable {
-    var day: DayEnum
-    var time: String
-
-    enum CodingKeys: String, CodingKey {
-        case day = "day"
-        case time = "time"
-    }
-}
-
-enum DayEnum: String, Codable {
-    case friday = "Friday"
-    case monday = "Monday"
-    case saturday = "Saturday"
-    case sunday = "Sunday"
-    case thursday = "Thursday"
-    case tuesday = "Tuesday"
-    case wednesday = "Wednesday"
-}
 
 // MARK: - Meta
 struct Meta: Codable {

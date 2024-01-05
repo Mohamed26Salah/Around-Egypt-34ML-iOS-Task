@@ -46,7 +46,6 @@ class NetworkClient {
                             """ )
                         observer(.success(responseObject))
                     case .failure(let error):
-                        print(error)
                         Logging(error.localizedDescription)
                         if let statusCode = response.response?.statusCode {
                             switch ServiceError.init(rawValue: statusCode) {
@@ -66,8 +65,10 @@ class NetworkClient {
                                     observer(.failure(reason))
                                 }
                             }
+                        } else {
+                            observer(.failure(error))
+                            print("No InterNet Connetion Network Client")
                         }
-                        print("No InterNet Connetion Network Client")
                     }
                 }.resume()
             return Disposables.create()

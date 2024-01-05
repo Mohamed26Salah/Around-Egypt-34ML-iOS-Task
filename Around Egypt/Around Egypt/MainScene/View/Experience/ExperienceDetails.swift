@@ -10,21 +10,14 @@ import SDWebImageSwiftUI
 
 struct ExperienceDetails: View {
     @State var width: CGFloat = .zero
-
     let experienceViewModel: ExperienceViewModel
     let experience: Experience
     
     var body: some View {
-        
         //        ScrollView {
         VStack {
             ZStack {
-                WebImage(url: URL(string: experience.coverPhoto))
-                    .resizable()
-                    .transition(.fade(duration: 0.5))
-                    .scaledToFill()
-                    .frame(width: nil, height: 300)
-                    .cornerRadius(10, corners: [.topLeft, .topRight])
+                getImage()
                     .overlay(
                         HStack {
                             Image(systemName: "eye.fill")
@@ -40,6 +33,7 @@ struct ExperienceDetails: View {
                             .frame(width: width)
                             .padding(.all), alignment: .bottom
                     )
+                
                 Button(action: {}) {
                     Text("Explore Now")
                         .padding()
@@ -48,6 +42,7 @@ struct ExperienceDetails: View {
                         .cornerRadius(8)
                         .foregroundColor(.red)
                 }
+                
             }
             .frame(width: width)
             Group {
@@ -86,8 +81,30 @@ struct ExperienceDetails: View {
         .background(.white)
         .getWidth($width)
     }
+    @ViewBuilder
+    private func getImage() -> some View {
+        if experienceViewModel.isThierAnError.value {
+            if let imageD = LocalDataManager.shared().getCachedImageDataFromRealm(withID: experience.id) {
+                let uiImage = UIImage(data: imageD)
+                Image(uiImage: uiImage!)
+                    .resizable()
+                    .transition(.fade(duration: 0.5))
+                    .scaledToFill()
+                    .frame(width: nil, height: 300)
+                    .cornerRadius(10, corners: [.topLeft, .topRight])
+            }
+        } else {
+            WebImage(url: URL(string: experience.coverPhoto))
+                .resizable()
+                .transition(.fade(duration: 0.5))
+                .scaledToFill()
+                .frame(width: nil, height: 300)
+                .cornerRadius(10, corners: [.topLeft, .topRight])
+        }
+    }
     //    }
 }
+
 
 //#Preview {
 //    ExperienceDetails()

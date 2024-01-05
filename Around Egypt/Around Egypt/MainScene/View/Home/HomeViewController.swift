@@ -101,8 +101,19 @@ extension HomeViewController {
             .observe(on: MainScheduler.asyncInstance)
             .bind(to: mostRecentExpCollectionView.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
                 guard let self = self else {return}
-                if let url = URL(string: row.coverPhoto ) {
-                    cell.coverImage.sd_setImage(with: url)
+                experienceViewModel.checkNetworkConnection { success in
+                    if success {
+                        if let url = URL(string: row.coverPhoto) {
+                            cell.coverImage.sd_setImage(with: url)
+                        }
+                    } else {
+                        if let imageD = LocalDataManager.shared().getCachedImageDataFromRealm(withID: row.id) {
+                            let uiImage = UIImage(data: imageD)
+                            DispatchQueue.main.async {
+                                cell.coverImage.image = uiImage
+                            }
+                        }
+                    }
                 }
                 cell.likesCountLabel.text = String(row.likesNo)
                 cell.experienceTitleLabel.text = row.title
@@ -122,6 +133,7 @@ extension HomeViewController {
                         return // Ensure index is within bounds
                 }
                 let selectedExperience = experienceViewModel.experincesModel[indexPath.row]
+                
                 showExperienceDetailsSheet(experience: selectedExperience)
                 
             })
@@ -138,8 +150,19 @@ extension HomeViewController {
             .observe(on: MainScheduler.asyncInstance)
             .bind(to: recommendedExpCollectionView.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
                 guard let self = self else {return}
-                if let url = URL(string: row.coverPhoto ) {
-                    cell.coverImage.sd_setImage(with: url)
+                experienceViewModel.checkNetworkConnection { success in
+                    if success {
+                        if let url = URL(string: row.coverPhoto ) {
+                            cell.coverImage.sd_setImage(with: url)
+                        }
+                    } else {
+                        if let imageD = LocalDataManager.shared().getCachedImageDataFromRealm(withID: row.id) {
+                            let uiImage = UIImage(data: imageD)
+                            DispatchQueue.main.async {
+                                cell.coverImage.image = uiImage
+                            }
+                        }
+                    }
                 }
                 cell.likesCountLabel.text = String(row.likesNo)
                 cell.experienceTitleLabel.text = row.title

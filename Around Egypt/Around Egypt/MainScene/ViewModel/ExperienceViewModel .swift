@@ -8,6 +8,8 @@
 import Foundation
 import RxSwift
 import RxRelay
+import Network
+
 class ExperienceViewModel{
     
     let disposeBag = DisposeBag()
@@ -19,10 +21,12 @@ class ExperienceViewModel{
     
     var errorSubject = PublishSubject<String>()
     var showLoading = BehaviorRelay<Bool>(value: false)
+    var isThierAnError = BehaviorRelay<Bool>(value: true)
     
     init() {
         getMostRecentExperinces()
         getRecommendedExperiences()
+        print(LocalDataManager.shared().returnDataBaseURL())
     }
 }
 
@@ -55,9 +59,17 @@ extension ExperienceViewModel {
                 self.showLoading.accept(false)
                 self.experincesModel = response
                 self.mostRecentExperinces.accept(response)
-
-            }, onFailure: { error in
+                self.cachExperience()
+                
+            }, onFailure: { [weak self] error in
+                guard let self = self else {
+                    return
+                }
                 print("Error: \(error)")
+                self.isThierAnError.accept(true)
+                self.experincesModel = LocalDataManager.shared().getAllExperiences()
+                self.mostRecentExperinces.accept(LocalDataManager.shared().getAllExperiences())
+                self.recommendedExperiences.accept(LocalDataManager.shared().getRecommendedExperiencesFromRealm())
             })
             .disposed(by: disposeBag)
     }
@@ -78,4 +90,29 @@ extension ExperienceViewModel {
     }
 }
 
-//MARK: Search
+//MARK: Cache Data
+
+extension ExperienceViewModel {
+    func cachExperience() {
+        LocalDataManager.shared().cacheExperiences(experiences: self.experincesModel) {
+            print("Done Cachcing")
+        }
+    }
+}
+
+//MARK: Check internet connectivity
+
+extension ExperienceViewModel {
+    func checkNetworkConnection(completion: @escaping (_ success: Bool) -> ()) {
+        let monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { path in
+            if path.status != .unsatisfied {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        let networkQueue = DispatchQueue(label: "network")
+        monitor.start(queue: networkQueue)
+    }
+}
