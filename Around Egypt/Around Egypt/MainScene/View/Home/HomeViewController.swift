@@ -135,6 +135,7 @@ extension HomeViewController {
                     self.mostRecentExpCollectionView.reloadData()
                     self.recommendedExpCollectionView.reloadData()
                 }
+                cell.accessibilityIdentifier = "ExperienceCell_\(row.id)"
             }
             .disposed(by: disposeBag)
         

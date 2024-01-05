@@ -25,7 +25,7 @@ struct ExperienceDetails: View {
                                 .foregroundStyle(.white)
                                 .padding(.leading,10)
                             Text(String(experience.viewsNo) + " views")
-                                .applyLabelStyle(style: .BodyLargeSemiBold, color: .white)
+                                .applyLabelStyle(style: .BodyMediumBold, color: .white)
                             Spacer()
                             Image(systemName: "photo.on.rectangle")
                                 .foregroundStyle(.white)
@@ -38,7 +38,7 @@ struct ExperienceDetails: View {
                 Button(action: {
                 }) {
                     Text("Explore Now")
-                        .applyLabelStyle(style: .BodyLargeSemiBold, color: .orangeHue)
+                        .applyLabelStyle(style: .BodyMediumBold, color: .orangeHue)
                         .padding()
                         .frame(width: nil, height: 50)
                         .background(.white)
@@ -46,11 +46,13 @@ struct ExperienceDetails: View {
                 }
                 
             }
+           
             .frame(width: width)
             Group {
                 HStack {
                     Text(experience.title)
-                        .applyLabelStyle(style: .BodyLargeSemiBold, color: .black)
+                        .applyLabelStyle(style: .BodyLargeBold, color: .black)
+                        .accessibilityIdentifier("TitleIdentifier")
                     Spacer()
                     Button {
                     } label: {
@@ -72,11 +74,12 @@ struct ExperienceDetails: View {
                     })
                     .disabled(isLiked)
                     Text(String(LocalDataManager.shared().getExperienceByID(id: experience.id)?.likesNo ?? experience.likesNo))
-                        .applyLabelStyle(style: .BodyLargeSemiBold, color: .black)
+                        .applyLabelStyle(style: .BodyMediumBold, color: .black)
                 }
                 HStack {
                     Text(experience.address)
-                        .applyLabelStyle(style: .BodyLargeRegular, color: .black)
+                        .applyLabelStyle(style: .BodyXSmallMedium, color: .black)
+                        .accessibilityIdentifier("AddressIdentifier")
                     Spacer()
                 }
                 Divider()
@@ -88,23 +91,25 @@ struct ExperienceDetails: View {
                     Spacer()
                 }
                 Text(experience.description)
-                    .applyLabelStyle(style: .BodyLargeRegular, color: .black)
+                    .applyLabelStyle(style: .BodySmallMedium, color: .black)
+                    .accessibilityIdentifier("DescriptionIdentifier")
             }
             .foregroundStyle(.black)
             .padding(.horizontal, 15)
             Spacer()
             
         }
+        .accessibilityIdentifier("ExperienceDetailsViewIdentifier")
         .background(.white)
         .getWidth($width)
         .onAppear {
             isLiked = LocalDataManager.shared().isExperienceLiked(experienceID: experience.id)
-//            for family in UIFont.familyNames {
-//                print("Family: \(family)")
-//                for name in UIFont.fontNames(forFamilyName: family) {
-//                    print("      - \(name)")
-//                }
-//            }
+            for family in UIFont.familyNames {
+                print("Family: \(family)")
+                for name in UIFont.fontNames(forFamilyName: family) {
+                    print("      - \(name)")
+                }
+            }
         }
     }
     @ViewBuilder
