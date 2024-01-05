@@ -25,8 +25,6 @@
 		AB9654CE2B46C7CD0076FB93 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB9654CD2B46C7CD0076FB93 /* RxRelay */; };
 		AB9654D02B46C7CD0076FB93 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB9654CF2B46C7CD0076FB93 /* RxSwift */; };
 		AB9654D22B46C7CD0076FB93 /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AB9654D12B46C7CD0076FB93 /* RxTest-Dynamic */; };
-		AB9654DC2B46C92C0076FB93 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654DA2B46C92C0076FB93 /* HomeViewController.swift */; };
-		AB9654DD2B46C92C0076FB93 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9654DB2B46C92C0076FB93 /* HomeViewController.xib */; };
 		AB9654EA2B46CB590076FB93 /* SystemDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654E92B46CB590076FB93 /* SystemDesign.swift */; };
 		AB9654EC2B46CB620076FB93 /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654EB2B46CB620076FB93 /* AppImages.swift */; };
 		AB9654EE2B46CB6A0076FB93 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9654ED2B46CB6A0076FB93 /* AppColors.swift */; };
@@ -42,6 +40,8 @@
 		AB9655092B46D9950076FB93 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9655082B46D9950076FB93 /* ResponseObject.swift */; };
 		AB96550B2B46E8C30076FB93 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96550A2B46E8C30076FB93 /* Experience.swift */; };
 		AB9EF8CF2B48402B003C9CE0 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9EF8CE2B48402B003C9CE0 /* RadioButton.swift */; };
+		AB9EF8D72B4857B4003C9CE0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9EF8D52B4857B3003C9CE0 /* HomeViewController.swift */; };
+		AB9EF8D82B4857B4003C9CE0 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9EF8D62B4857B4003C9CE0 /* HomeViewController.xib */; };
 		AB9FDDC02B472D5E00C5EA21 /* UIViewController + Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */; };
 		AB9FDDC22B47447C00C5EA21 /* ExperienceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */; };
 		AB9FDDC42B474E8300C5EA21 /* View + Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */; };
@@ -84,8 +84,6 @@
 		AB9654AA2B46C5F20076FB93 /* Around EgyptUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Around EgyptUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9654AE2B46C5F20076FB93 /* Around_EgyptUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Around_EgyptUITests.swift; sourceTree = "<group>"; };
 		AB9654B02B46C5F20076FB93 /* Around_EgyptUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Around_EgyptUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		AB9654DA2B46C92C0076FB93 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		AB9654DB2B46C92C0076FB93 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		AB9654E32B46CA840076FB93 /* Gotham-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Light.otf"; sourceTree = "<group>"; };
 		AB9654E42B46CA840076FB93 /* Gotham-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Black.otf"; sourceTree = "<group>"; };
 		AB9654E52B46CA840076FB93 /* Gotham-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Bold.otf"; sourceTree = "<group>"; };
@@ -106,6 +104,8 @@
 		AB96550A2B46E8C30076FB93 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
 		AB96550D2B46F8950076FB93 /* Gotham-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Regular.otf"; sourceTree = "<group>"; };
 		AB9EF8CE2B48402B003C9CE0 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		AB9EF8D52B4857B3003C9CE0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AB9EF8D62B4857B4003C9CE0 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		AB9FDDBF2B472D5E00C5EA21 /* UIViewController + Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extenstions.swift"; sourceTree = "<group>"; };
 		AB9FDDC12B47447C00C5EA21 /* ExperienceDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceDetails.swift; sourceTree = "<group>"; };
 		AB9FDDC32B474E8300C5EA21 /* View + Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extenstions.swift"; sourceTree = "<group>"; };
@@ -263,8 +263,8 @@
 		AB9654D82B46C9010076FB93 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				AB9654DA2B46C92C0076FB93 /* HomeViewController.swift */,
-				AB9654DB2B46C92C0076FB93 /* HomeViewController.xib */,
+				AB9EF8D52B4857B3003C9CE0 /* HomeViewController.swift */,
+				AB9EF8D62B4857B4003C9CE0 /* HomeViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -509,9 +509,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB96549A2B46C5F10076FB93 /* LaunchScreen.storyboard in Resources */,
+				AB9EF8D82B4857B4003C9CE0 /* HomeViewController.xib in Resources */,
 				AB9654972B46C5F10076FB93 /* Assets.xcassets in Resources */,
 				AB8E529B2B47229B009AF78E /* ExperienceCollectionViewCell.xib in Resources */,
-				AB9654DD2B46C92C0076FB93 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,8 +561,8 @@
 				AB9655042B46D65B0076FB93 /* AuthRepo.swift in Sources */,
 				AB8E529A2B47229B009AF78E /* ExperienceCollectionViewCell.swift in Sources */,
 				AB9FDDCF2B47705C00C5EA21 /* UIImage + Extenstion.swift in Sources */,
+				AB9EF8D72B4857B4003C9CE0 /* HomeViewController.swift in Sources */,
 				AB9654902B46C5F00076FB93 /* SceneDelegate.swift in Sources */,
-				AB9654DC2B46C92C0076FB93 /* HomeViewController.swift in Sources */,
 				AB9FDDC02B472D5E00C5EA21 /* UIViewController + Extenstions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

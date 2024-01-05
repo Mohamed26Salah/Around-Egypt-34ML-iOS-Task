@@ -35,7 +35,8 @@ struct ExperienceDetails: View {
                             .padding(.all), alignment: .bottom
                     )
                 
-                Button(action: {}) {
+                Button(action: {
+                }) {
                     Text("Explore Now")
                         .padding()
                         .frame(width: nil, height: 50)
@@ -51,8 +52,11 @@ struct ExperienceDetails: View {
                     Text(experience.title)
                         .bold()
                     Spacer()
-                    Image(systemName: "square.and.arrow.up")
-                        .foregroundStyle(.red)
+                    Button {
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                            .foregroundStyle(.red)
+                    }
                     Button(action: {
                         withAnimation {
                             isLiked = true

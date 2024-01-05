@@ -181,7 +181,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="264.66666666666669" height="44"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Egyption Desert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLr-g2-GUV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140.66666666666666" height="44"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="264.66666666666669" height="44"/>
                                                         <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="17"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -191,6 +191,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="dLr-g2-GUV" secondAttribute="bottom" id="9lC-Np-KhS"/>
                                                     <constraint firstItem="dLr-g2-GUV" firstAttribute="top" secondItem="Bir-VQ-pWL" secondAttribute="top" id="I8c-hP-ifj"/>
+                                                    <constraint firstAttribute="trailing" secondItem="dLr-g2-GUV" secondAttribute="trailing" id="KUO-7O-hpF"/>
                                                     <constraint firstItem="dLr-g2-GUV" firstAttribute="leading" secondItem="Bir-VQ-pWL" secondAttribute="leading" id="ybZ-Vn-oPC"/>
                                                 </constraints>
                                             </view>
