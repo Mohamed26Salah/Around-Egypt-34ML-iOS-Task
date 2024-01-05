@@ -38,7 +38,7 @@ struct ExperienceDetails: View {
                 Button(action: {
                 }) {
                     Text("Explore Now")
-                        .applyLabelStyle(style: .BodyLargeSemiBold, color: .red)
+                        .applyLabelStyle(style: .BodyLargeSemiBold, color: .orangeHue)
                         .padding()
                         .frame(width: nil, height: 50)
                         .background(.white)
@@ -55,7 +55,7 @@ struct ExperienceDetails: View {
                     Button {
                     } label: {
                         Image(systemName: "square.and.arrow.up")
-                            .foregroundStyle(.red)
+                            .foregroundStyle(.orangeHue)
                     }
                     Button(action: {
                         withAnimation {
@@ -68,7 +68,7 @@ struct ExperienceDetails: View {
                         
                     }, label: {
                         Image(systemName: isLiked ? "heart.fill" : "heart" )
-                            .foregroundStyle(.red)
+                            .foregroundStyle(.orangeHue)
                     })
                     .disabled(isLiked)
                     Text(String(LocalDataManager.shared().getExperienceByID(id: experience.id)?.likesNo ?? experience.likesNo))
