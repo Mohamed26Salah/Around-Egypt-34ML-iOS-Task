@@ -7,11 +7,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Gotham-Bold.otf">
-            <string>Gotham-Bold</string>
+        <array key="SF-Pro-Display-Bold.ttf">
+            <string>SFProDisplay-Bold</string>
         </array>
-        <array key="Gotham-Light.otf">
-            <string>Gotham-Light</string>
+        <array key="SF-Pro-Display-Medium.ttf">
+            <string>SFProDisplay-Medium</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.ttf">
+            <string>SFProDisplay-Regular</string>
         </array>
     </customFonts>
     <objects>
@@ -29,7 +32,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="1129"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-9S-QDo">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t7N-9S-QDo">
                     <rect key="frame" x="0.0" y="55" width="393" height="1080"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5PZ-VN-N68">
@@ -102,10 +105,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbe-4Y-mvN">
-                            <rect key="frame" x="0.0" y="45" width="393" height="1035"/>
+                            <rect key="frame" x="0.0" y="50" width="393" height="1030"/>
                             <subviews>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8S-fE-l4P">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="1035"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="1030"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okf-g9-0ct">
                                             <rect key="frame" x="3" y="-1" width="392" height="1592"/>
@@ -127,8 +130,8 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="392" height="40"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6m-SD-g6Y">
-                                                                            <rect key="frame" x="15" y="14.33333333333333" width="117" height="25.666666666666671"/>
-                                                                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="23"/>
+                                                                            <rect key="frame" x="15" y="12.33333333333333" width="105" height="27.666666666666671"/>
+                                                                            <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="23"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -144,8 +147,8 @@
                                                                     <rect key="frame" x="0.0" y="40" width="392" height="55"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now you can explore any experience in 360 degrees and get all the details about it all in one place." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKR-XJ-rx2">
-                                                                            <rect key="frame" x="15" y="0.0" width="362" height="48"/>
-                                                                            <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham" pointSize="15"/>
+                                                                            <rect key="frame" x="15" y="0.0" width="362" height="36"/>
+                                                                            <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="15"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -162,8 +165,8 @@
                                                                     <rect key="frame" x="0.0" y="95" width="392" height="40"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended Experiences" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGz-Py-B0A">
-                                                                            <rect key="frame" x="15" y="10" width="324.66666666666669" height="20"/>
-                                                                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="23"/>
+                                                                            <rect key="frame" x="15" y="10" width="270" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="23"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -203,8 +206,8 @@
                                                                     <rect key="frame" x="0.0" y="385" width="392" height="40"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Recent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7iE-nE-XaK">
-                                                                            <rect key="frame" x="15" y="10" width="144.33333333333334" height="20"/>
-                                                                            <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham" pointSize="23"/>
+                                                                            <rect key="frame" x="15" y="10" width="132" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="23"/>
                                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>

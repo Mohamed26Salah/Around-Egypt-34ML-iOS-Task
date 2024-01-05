@@ -25,7 +25,7 @@ struct ExperienceDetails: View {
                                 .foregroundStyle(.white)
                                 .padding(.leading,10)
                             Text(String(experience.viewsNo) + " views")
-                                .foregroundStyle(.white)
+                                .applyLabelStyle(style: .BodyLargeSemiBold, color: .white)
                             Spacer()
                             Image(systemName: "photo.on.rectangle")
                                 .foregroundStyle(.white)
@@ -38,11 +38,11 @@ struct ExperienceDetails: View {
                 Button(action: {
                 }) {
                     Text("Explore Now")
+                        .applyLabelStyle(style: .BodyLargeSemiBold, color: .red)
                         .padding()
                         .frame(width: nil, height: 50)
                         .background(.white)
                         .cornerRadius(8)
-                        .foregroundColor(.red)
                 }
                 
             }
@@ -50,7 +50,7 @@ struct ExperienceDetails: View {
             Group {
                 HStack {
                     Text(experience.title)
-                        .bold()
+                        .applyLabelStyle(style: .BodyLargeSemiBold, color: .black)
                     Spacer()
                     Button {
                     } label: {
@@ -72,10 +72,11 @@ struct ExperienceDetails: View {
                     })
                     .disabled(isLiked)
                     Text(String(LocalDataManager.shared().getExperienceByID(id: experience.id)?.likesNo ?? experience.likesNo))
+                        .applyLabelStyle(style: .BodyLargeSemiBold, color: .black)
                 }
                 HStack {
                     Text(experience.address)
-                        .fontWeight(.light)
+                        .applyLabelStyle(style: .BodyLargeRegular, color: .black)
                     Spacer()
                 }
                 Divider()
@@ -87,8 +88,7 @@ struct ExperienceDetails: View {
                     Spacer()
                 }
                 Text(experience.description)
-                    .font(.caption)
-                    .bold()
+                    .applyLabelStyle(style: .BodyLargeRegular, color: .black)
             }
             .foregroundStyle(.black)
             .padding(.horizontal, 15)
@@ -99,6 +99,12 @@ struct ExperienceDetails: View {
         .getWidth($width)
         .onAppear {
             isLiked = LocalDataManager.shared().isExperienceLiked(experienceID: experience.id)
+//            for family in UIFont.familyNames {
+//                print("Family: \(family)")
+//                for name in UIFont.fontNames(forFamilyName: family) {
+//                    print("      - \(name)")
+//                }
+//            }
         }
     }
     @ViewBuilder
@@ -125,7 +131,7 @@ struct ExperienceDetails: View {
     //    }
 }
 
-
+//
 //#Preview {
-//    ExperienceDetails()
+//    ExperienceDetails(experience: Experience(id: "0", title: "Alexandria", coverPhoto: "", description: "AlexandriaAlexandriaAlexandriaAlexandria", viewsNo: 23123, likesNo: 213, address: "Mo Salah", recommended: 1))
 //}

@@ -4,11 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Gotham-Black.otf</string>
-		<string>Gotham-Bold.otf</string>
-		<string>Gotham-Light.otf</string>
-		<string>Gotham-Thin.otf</string>
-		<string>Gotham-Regular.otf</string>
+		<string>SF-Pro-Display-Bold.ttf</string>
+		<string>SF-Pro-Display-Semibold.ttf</string>
+		<string>SF-Pro-Display-Medium.ttf</string>
+		<string>SF-Pro-Display-Regular.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
