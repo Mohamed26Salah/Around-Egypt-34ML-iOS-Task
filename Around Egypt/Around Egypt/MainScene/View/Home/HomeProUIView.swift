@@ -7,9 +7,9 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
-
-final class HomeProUIView: UIView {
+final class HomeUIView: UIView {
     
     //MARK: - Main Views Layout
     
@@ -73,6 +73,7 @@ final class HomeProUIView: UIView {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.enablesReturnKeyAutomatically = false
+        searchBar.accessibilityIdentifier = "homeProUISearchBar"
         //        searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "Try Luxor"
         return searchBar
@@ -239,7 +240,7 @@ final class HomeProUIView: UIView {
 
 //MARK: - Main Views constrains
 
-extension HomeProUIView {
+extension HomeUIView {
     private func setupMainStackView() {
         addSubview(stackView)
         NSLayoutConstraint.activate([
@@ -257,7 +258,7 @@ extension HomeProUIView {
 
 //MARK: - Search View constrains
 
-extension HomeProUIView {
+extension HomeUIView {
     private func setupSearchHorizontalStackView() {
         searchView.addSubview(searchHorizontalStackView)
         
@@ -317,7 +318,7 @@ extension HomeProUIView {
 }
 
 //MARK: - Experience View constrains
-extension HomeProUIView {
+extension HomeUIView {
     private func setupMainScrollView() {
         addSubview(scrollView)
         
@@ -364,7 +365,7 @@ extension HomeProUIView {
 
 //MARK: - Vertical Stack To Be Hidden View constrains (Horizontal Collection View) -
 
-extension HomeProUIView {
+extension HomeUIView {
     private func setupVerticalStackToBeHidden() {
         
         verticalStackToBeHiddenWhenSearch.addArrangedSubview(welcomeLabelView)
@@ -440,7 +441,7 @@ extension HomeProUIView {
 
 //MARK: - Vertical Experience Collection View -
 
-extension HomeProUIView {
+extension HomeUIView {
     private func setupMostRecetCollectionView() {
         recentExperienceCollectionView.addSubview(mostRecentExpCollectionView)
         NSLayoutConstraint.activate([
@@ -471,7 +472,7 @@ struct PreviewViewController_Previews: PreviewProvider {
     
     static var previews: some View {
         UIViewPreview {
-            HomeProUIView()
+            HomeUIView()
         }
     }
 }
