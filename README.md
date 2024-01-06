@@ -2,6 +2,12 @@
 
 Around Egypt is an iOS application developed as a task project for a company. The app provides access to information about various places in Egypt through two primary pages, leveraging an API to fetch relevant data.
 
+<div style="display: flex;">
+<img src="ScreenShots/1.PNG" alt="Screenshot 1" width="200">
+<img src="ScreenShots/2.PNG" alt="Screenshot 2" width="200">
+<img src="ScreenShots/3.PNG" alt="Screenshot 2" width="200">
+</div>
+
 ## Features
 - Displays information about different locations in Egypt fetched from an external API
 - Caches fetched data and images locally using Realm database for improved offline access
