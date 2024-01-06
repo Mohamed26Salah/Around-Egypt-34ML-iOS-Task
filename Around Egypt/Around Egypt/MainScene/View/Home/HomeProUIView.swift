@@ -81,7 +81,7 @@ final class HomeUIView: UIView {
     
     //MARK: - Experience View Layout -
     
-    private let scrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView

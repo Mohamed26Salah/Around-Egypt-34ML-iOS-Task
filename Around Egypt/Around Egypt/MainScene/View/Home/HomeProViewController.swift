@@ -149,7 +149,7 @@ extension HomeViewController {
                 guard indexPath.row < experienceViewModel.experincesModel.count else {
                     return // Ensure index is within bounds
                 }
-                let selectedExperience = experienceViewModel.experincesModel[indexPath.row]
+                let selectedExperience = experienceViewModel.mostRecentExperinces.value[indexPath.row]
                 
                 showExperienceDetailsSheet(experience: selectedExperience)
                 
@@ -251,17 +251,13 @@ extension HomeViewController  {
             return
         }
         
+        homeUIView.scrollView.setContentOffset(CGPoint(x: 0, y: -homeUIView.scrollView.contentInset.top), animated: true)
         //Handle if searchbar if text are written
         experienceViewModel.mostRecentExperinces.accept([])
         homeUIView.verticalStackToBeHiddenWhenSearch.isHidden = true
         experienceViewModel.getSearchedExperinces(query: searchText)
+        
     }
-    //    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    //        searchBar.text = nil // Clear the search text
-    //        searchBar.resignFirstResponder() // Dismiss the keyboard
-    //        self.stackTobeHiddenWhenSearch.isHidden = false
-    //        experienceViewModel.mostRecentExperinces.accept(experienceViewModel.experincesModel)
-    //    }
 }
 
 //MARK: - Very Very Simple coordiantor -
