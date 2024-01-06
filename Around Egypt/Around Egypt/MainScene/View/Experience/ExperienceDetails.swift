@@ -15,7 +15,6 @@ struct ExperienceDetails: View {
     let experienceViewModel: ExperienceViewModel
     let experience: Experience
     var body: some View {
-        //        ScrollView {
         VStack {
             ZStack {
                 getImage()
@@ -46,7 +45,6 @@ struct ExperienceDetails: View {
                 }
                 
             }
-           
             .frame(width: width)
             Group {
                 HStack {
@@ -133,7 +131,6 @@ struct ExperienceDetails: View {
                 .cornerRadius(10, corners: [.topLeft, .topRight])
         }
     }
-    //    }
 }
 
 //

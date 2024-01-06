@@ -139,7 +139,7 @@ final class ExperienceRepoTest: XCTestCase {
         XCTAssertEqual(receivedExperience?.id, experienceID)
     }
     
-    func testLikeAnExperienceSuccess() {
+    func testLikeAnExperience() {
         let experienceID = "123"
         mockNetworkClient.fetchGlobalResult = 10
         
