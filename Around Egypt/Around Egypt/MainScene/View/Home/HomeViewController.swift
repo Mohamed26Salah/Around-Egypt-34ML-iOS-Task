@@ -17,7 +17,6 @@ class HomeViewController: UIViewController {
     let homeUIView = HomeUIView()
     let experienceViewModel: ExperienceViewModel = ExperienceViewModel()
     let disposeBag = DisposeBag()
-    var isSwitching: Bool = false
     
     override func loadView() {
         self.view = homeUIView
@@ -33,10 +32,7 @@ class HomeViewController: UIViewController {
         setupSearchBar()
         updateLikesCountFromExperienceDetails()
         
-        homeUIView.mostRecentExpCollection.delegate = self
         homeUIView.scrollView.delegate = self
-        
-        //print(viewControllerView == self.view) // true
     }
     
 }
