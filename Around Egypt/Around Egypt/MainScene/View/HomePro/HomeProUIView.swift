@@ -72,6 +72,7 @@ final class HomeProUIView: UIView {
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.enablesReturnKeyAutomatically = false
         //        searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "Try Luxor"
         return searchBar
