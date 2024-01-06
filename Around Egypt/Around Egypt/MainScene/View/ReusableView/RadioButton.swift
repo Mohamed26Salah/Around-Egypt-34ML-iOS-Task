@@ -54,9 +54,9 @@ class RadioButton: UIButton {
     
     func updateButtonAppearance() {
         if isChecked {
-            self.setImage(UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            self.setImage(UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.orangeHue), for: .normal)
         } else {
-            self.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            self.setImage(UIImage(systemName: "heart")?.withRenderingMode(.alwaysOriginal).withTintColor(.orangeHue), for: .normal)
         }
     }
 }

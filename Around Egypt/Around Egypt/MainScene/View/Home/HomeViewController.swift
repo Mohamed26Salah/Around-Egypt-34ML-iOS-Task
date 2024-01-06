@@ -188,6 +188,7 @@ extension HomeViewController {
                 let likesCount = LocalDataManager.shared().getExperienceByID(id: row.id)?.likesNo
                 let isLiked = LocalDataManager.shared().isExperienceLiked(experienceID: row.id)
                 
+                cell.likeButton.tintColor = .orangeHue
                 cell.likesCountLabel.text = String(likesCount ?? row.likesNo)
                 cell.likeButton.isChecked = isLiked
                 cell.likeButton.isEnabled = !isLiked
