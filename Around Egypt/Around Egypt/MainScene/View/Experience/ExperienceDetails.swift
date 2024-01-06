@@ -58,9 +58,7 @@ struct ExperienceDetails: View {
                             .foregroundStyle(.orangeHue)
                     }
                     Button(action: {
-                        withAnimation {
-                            isLiked = true
-                        }
+                        isLiked = true
                         LocalDataManager.shared().likeExperience(experienceID: experience.id)
                         if let updateLikeCountClosure = experienceViewModel.updateLikeCount {
                             updateLikeCountClosure()
