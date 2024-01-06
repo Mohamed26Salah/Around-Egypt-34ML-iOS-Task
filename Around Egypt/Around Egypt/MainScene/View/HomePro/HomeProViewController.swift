@@ -1,8 +1,8 @@
 //
-//  TestViewController.swift
+//  HomeProViewController.swift
 //  Around Egypt
 //
-//  Created by Mohamed Salah on 05/01/2024.
+//  Created by Mohamed Salah on 06/01/2024.
 //
 
 import UIKit
@@ -12,31 +12,33 @@ import RxRelay
 import SDWebImage
 import SwiftUI
 
-class HomeViewController: UIViewController {
+class HomeProViewController: UIViewController {
     
-    // MARK: - Variables -
-    @IBOutlet weak var recommendedExpCollectionView: UICollectionView!
-    @IBOutlet weak var mostRecentExpCollectionView: UICollectionView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var stackTobeHiddenWhenSearch: UIStackView!
-    
+    let homeProUIView = HomeProUIView()
     let experienceViewModel: ExperienceViewModel = ExperienceViewModel()
     let disposeBag = DisposeBag()
-    // MARK: - Initialization -
+    
+    override func loadView() {
+        self.view = homeProUIView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         hideKeyboardWhenTappedAround()
         setupUI()
         bindDataToTableView()
         bindDataToCollectionView()
         setupSearchBar()
         updateLikesCountFromExperienceDetails()
+        //            print(viewControllerView == self.view) // true
     }
     
 }
 
+
 // MARK: - UI Style -
-extension HomeViewController {
+extension HomeProViewController {
     private func setupUI() {
         setupMostRecentExpCollectionView()
         setupRecommenedExpCollectionView()
@@ -45,29 +47,29 @@ extension HomeViewController {
 
 
 // MARK: - Collection View Manegement -
-extension HomeViewController {
+extension HomeProViewController {
     private func setupRecommenedExpCollectionView() {
-        recommendedExpCollectionView.register(ExperienceCollectionViewCell.nib(),
-                                              forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
-        recommendedExpCollectionView.delegate = self
+        homeProUIView.recommendedExpCollectionView.register(ExperienceCollectionViewCell.nib(),
+                                                            forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
+        homeProUIView.recommendedExpCollectionView.delegate = self
     }
 }
 
-extension HomeViewController {
+extension HomeProViewController {
     private func setupMostRecentExpCollectionView() {
-        mostRecentExpCollectionView.register(ExperienceCollectionViewCell.nib(),
-                                             forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
-        mostRecentExpCollectionView.delegate = self
+        homeProUIView.mostRecentExpCollectionView.register(ExperienceCollectionViewCell.nib(),
+                                                           forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
+        homeProUIView.mostRecentExpCollectionView.delegate = self
     }
     
 }
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
+extension HomeProViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == recommendedExpCollectionView {
-            return CGSize(width: recommendedExpCollectionView.frame.width, height: 250)
-        } else if collectionView == mostRecentExpCollectionView {
-            return CGSize(width: mostRecentExpCollectionView.frame.width, height: 250)
+        if collectionView == homeProUIView.recommendedExpCollectionView {
+            return CGSize(width: homeProUIView.recommendedExpCollectionView.frame.width, height: 250)
+        } else if collectionView == homeProUIView.mostRecentExpCollectionView {
+            return CGSize(width: homeProUIView.mostRecentExpCollectionView.frame.width, height: 250)
         }
         return CGSize.zero
     }
@@ -76,7 +78,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Collection View Scroll (Recommened Expo) -
 
-extension HomeViewController: UIScrollViewDelegate {
+extension HomeProViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         centerCellOnScreen()
     }
@@ -88,21 +90,21 @@ extension HomeViewController: UIScrollViewDelegate {
     }
     
     private func centerCellOnScreen() {
-        let centerPoint = CGPoint(x: recommendedExpCollectionView.contentOffset.x + recommendedExpCollectionView.bounds.width / 2,
-                                  y: recommendedExpCollectionView.bounds.height / 2)
-        if let indexPath = recommendedExpCollectionView.indexPathForItem(at: centerPoint) {
-            recommendedExpCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        let centerPoint = CGPoint(x: homeProUIView.recommendedExpCollectionView.contentOffset.x + homeProUIView.recommendedExpCollectionView.bounds.width / 2,
+                                  y: homeProUIView.recommendedExpCollectionView.bounds.height / 2)
+        if let indexPath = homeProUIView.recommendedExpCollectionView.indexPathForItem(at: centerPoint) {
+            homeProUIView.recommendedExpCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
 }
 
 // MARK: - RxSwift - Collection View - Most Recent -
 
-extension HomeViewController {
+extension HomeProViewController {
     func bindDataToTableView() {
         experienceViewModel.mostRecentExperinces
             .observe(on: MainScheduler.asyncInstance)
-            .bind(to: mostRecentExpCollectionView.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
+            .bind(to: homeProUIView.mostRecentExpCollectionView.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
                 guard let self = self else {return}
                 experienceViewModel.checkNetworkConnection { success in
                     if success {
@@ -132,20 +134,20 @@ extension HomeViewController {
                 cell.likesButtonTapped = {
                     LocalDataManager.shared().likeExperience(experienceID: row.id)
                     self.experienceViewModel.likeAnExperience(experienceID: row.id)
-                    self.mostRecentExpCollectionView.reloadData()
-                    self.recommendedExpCollectionView.reloadData()
+                    self.homeProUIView.mostRecentExpCollectionView.reloadData()
+                    self.homeProUIView.recommendedExpCollectionView.reloadData()
                 }
                 cell.accessibilityIdentifier = "ExperienceCell_\(row.id)"
             }
             .disposed(by: disposeBag)
         
-        mostRecentExpCollectionView.rx.itemSelected
+        homeProUIView.mostRecentExpCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self else {
                     return
                 }
                 guard indexPath.row < experienceViewModel.experincesModel.count else {
-                        return // Ensure index is within bounds
+                    return // Ensure index is within bounds
                 }
                 let selectedExperience = experienceViewModel.experincesModel[indexPath.row]
                 
@@ -159,11 +161,11 @@ extension HomeViewController {
 
 // MARK: - RxSwift - CollectionView - Recommened -
 
-extension HomeViewController {
+extension HomeProViewController {
     func bindDataToCollectionView() {
         experienceViewModel.recommendedExperiences
             .observe(on: MainScheduler.asyncInstance)
-            .bind(to: recommendedExpCollectionView.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
+            .bind(to: homeProUIView.recommendedExpCollectionView.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
                 guard let self = self else {return}
                 experienceViewModel.checkNetworkConnection { success in
                     if success {
@@ -192,20 +194,20 @@ extension HomeViewController {
                 cell.likesButtonTapped = {
                     LocalDataManager.shared().likeExperience(experienceID: row.id)
                     self.experienceViewModel.likeAnExperience(experienceID: row.id)
-                    self.recommendedExpCollectionView.reloadData()
-                    self.mostRecentExpCollectionView.reloadData()
+                    self.homeProUIView.recommendedExpCollectionView.reloadData()
+                    self.homeProUIView.mostRecentExpCollectionView.reloadData()
                 }
                 
             }
             .disposed(by: disposeBag)
         
-        recommendedExpCollectionView.rx.itemSelected
+        homeProUIView.recommendedExpCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self else {
                     return
                 }
                 guard indexPath.row < experienceViewModel.experincesModel.count else {
-                        return // Ensure index is within bounds
+                    return // Ensure index is within bounds
                 }
                 let selectedExperience = experienceViewModel.recommendedExperiences.value[indexPath.row]
                 showExperienceDetailsSheet(experience: selectedExperience)
@@ -216,12 +218,12 @@ extension HomeViewController {
 
 // MARK: - Setup Search Bar -
 
-extension HomeViewController: UISearchBarDelegate  {
+extension HomeProViewController: UISearchBarDelegate  {
     private func setupSearchBar() {
-        searchBar.delegate = self
-        searchBar.backgroundImage = UIImage()
+        homeProUIView.searchBar.delegate = self
+        homeProUIView.searchBar.backgroundImage = UIImage()
         
-        if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
+        if let textFieldInsideSearchBar = homeProUIView.searchBar.value(forKey: "searchField") as? UITextField {
             textFieldInsideSearchBar.textColor = .black
             let placeholderText = "Try \"Luxor\""
             let attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
@@ -229,7 +231,7 @@ extension HomeViewController: UISearchBarDelegate  {
         }
         
         // Change the search icon (magnifying glass) color
-        if let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField {
+        if let textFieldInsideSearchBar = homeProUIView.searchBar.value(forKey: "searchField") as? UITextField {
             if let leftView = textFieldInsideSearchBar.leftView as? UIImageView {
                 leftView.image = leftView.image?.withRenderingMode(.alwaysTemplate)
                 leftView.tintColor = .gray
@@ -239,19 +241,19 @@ extension HomeViewController: UISearchBarDelegate  {
 }
 
 //MARK: - Search Delegate -
-extension HomeViewController  {
+extension HomeProViewController  {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //Handle if searchbar is empty
         guard let searchText = searchBar.text, !searchText.isEmpty else {
             searchBar.resignFirstResponder()
-            self.stackTobeHiddenWhenSearch.isHidden = false
+            homeProUIView.verticalStackToBeHiddenWhenSearch.isHidden = false
             experienceViewModel.mostRecentExperinces.accept(experienceViewModel.experincesModel)
             return
         }
         
         //Handle if searchbar if text are written
         experienceViewModel.mostRecentExperinces.accept([])
-        self.stackTobeHiddenWhenSearch.isHidden = true
+        homeProUIView.verticalStackToBeHiddenWhenSearch.isHidden = true
         experienceViewModel.getSearchedExperinces(query: searchText)
     }
     //    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -264,23 +266,24 @@ extension HomeViewController  {
 
 //MARK: - Very Very Simple coordiantor -
 
-extension HomeViewController {
+extension HomeProViewController {
     func showExperienceDetailsSheet(experience: Experience) {
         let swiftUIController = UIHostingController(rootView: ExperienceDetails(experienceViewModel: experienceViewModel, experience: experience))
         present(swiftUIController, animated: true, completion: nil)
     }
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-           print("Sheet has been dismissed.")
-       }
+        print("Sheet has been dismissed.")
+    }
 }
 
 //MARK: - Refresh Tables -
 
-extension HomeViewController {
+extension HomeProViewController {
     func updateLikesCountFromExperienceDetails() {
-        experienceViewModel.updateLikeCount = {
-            self.recommendedExpCollectionView.reloadData()
-            self.mostRecentExpCollectionView.reloadData()
+        experienceViewModel.updateLikeCount = { [weak self] in
+            guard let self = self else {return}
+            self.homeProUIView.recommendedExpCollectionView.reloadData()
+            self.homeProUIView.mostRecentExpCollectionView.reloadData()
         }
     }
 }

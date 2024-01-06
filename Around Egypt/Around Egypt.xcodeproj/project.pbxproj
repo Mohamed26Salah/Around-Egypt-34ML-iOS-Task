@@ -11,6 +11,8 @@
 		AB5173DF2B48B28D00814CD9 /* Gotham Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB5173DE2B48B28D00814CD9 /* Gotham Medium.otf */; };
 		AB5173E12B48B29500814CD9 /* Gotham Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB5173E02B48B29500814CD9 /* Gotham Bold.otf */; };
 		AB5173E32B48B2A100814CD9 /* Gotham Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB5173E22B48B2A100814CD9 /* Gotham Regular.otf */; };
+		AB7BF4AC2B495DFA0080A511 /* HomeProViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7BF4AB2B495DFA0080A511 /* HomeProViewController.swift */; };
+		AB7BF4AF2B495E860080A511 /* HomeProUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7BF4AE2B495E860080A511 /* HomeProUIView.swift */; };
 		AB8E529A2B47229B009AF78E /* ExperienceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8E52982B47229B009AF78E /* ExperienceCollectionViewCell.swift */; };
 		AB8E529B2B47229B009AF78E /* ExperienceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB8E52992B47229B009AF78E /* ExperienceCollectionViewCell.xib */; };
 		AB96548E2B46C5F00076FB93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB96548D2B46C5F00076FB93 /* AppDelegate.swift */; };
@@ -98,6 +100,8 @@
 		AB5173E02B48B29500814CD9 /* Gotham Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Bold.otf"; sourceTree = "<group>"; };
 		AB5173E22B48B2A100814CD9 /* Gotham Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Regular.otf"; sourceTree = "<group>"; };
 		AB5173E42B48B4C800814CD9 /* Gotham Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham Light.otf"; sourceTree = "<group>"; };
+		AB7BF4AB2B495DFA0080A511 /* HomeProViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProViewController.swift; sourceTree = "<group>"; };
+		AB7BF4AE2B495E860080A511 /* HomeProUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProUIView.swift; sourceTree = "<group>"; };
 		AB8E52982B47229B009AF78E /* ExperienceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB8E52992B47229B009AF78E /* ExperienceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceCollectionViewCell.xib; sourceTree = "<group>"; };
 		AB96548A2B46C5F00076FB93 /* Around Egypt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Around Egypt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +195,24 @@
 			path = Gotham;
 			sourceTree = "<group>";
 		};
+		AB7BF4A92B495D430080A511 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AB9654962B46C5F10076FB93 /* Assets.xcassets */,
+				AB9654982B46C5F10076FB93 /* LaunchScreen.storyboard */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AB7BF4AA2B495DDD0080A511 /* HomePro */ = {
+			isa = PBXGroup;
+			children = (
+				AB7BF4AB2B495DFA0080A511 /* HomeProViewController.swift */,
+				AB7BF4AE2B495E860080A511 /* HomeProUIView.swift */,
+			);
+			path = HomePro;
+			sourceTree = "<group>";
+		};
 		AB8E52962B47226A009AF78E /* ExperienceCVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,15 +246,14 @@
 		AB96548C2B46C5F00076FB93 /* Around Egypt */ = {
 			isa = PBXGroup;
 			children = (
+				AB96549B2B46C5F10076FB93 /* Info.plist */,
+				AB7BF4A92B495D430080A511 /* Utilities */,
 				AB9654D32B46C8640076FB93 /* Delegate */,
 				AB9655052B46D71C0076FB93 /* Core */,
 				AB9654F12B46CE830076FB93 /* Network */,
 				AB9FDDC92B476B6C00C5EA21 /* DataManager */,
 				AB9654FE2B46D07A0076FB93 /* MainScene */,
 				AB9654D72B46C8B10076FB93 /* Resources */,
-				AB9654962B46C5F10076FB93 /* Assets.xcassets */,
-				AB9654982B46C5F10076FB93 /* LaunchScreen.storyboard */,
-				AB96549B2B46C5F10076FB93 /* Info.plist */,
 			);
 			path = "Around Egypt";
 			sourceTree = "<group>";
@@ -259,6 +280,7 @@
 		AB9654D42B46C86E0076FB93 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB7BF4AA2B495DDD0080A511 /* HomePro */,
 				AB9EF8CD2B484019003C9CE0 /* ReusableView */,
 				ABCA2D8C2B46FECB00F76066 /* Cell */,
 				AB9654D82B46C9010076FB93 /* Home */,
@@ -614,10 +636,12 @@
 				AB9FDDC42B474E8300C5EA21 /* View + Extenstions.swift in Sources */,
 				AB96550B2B46E8C30076FB93 /* Experience.swift in Sources */,
 				AB9FDDCD2B476CD300C5EA21 /* LocalDataManager.swift in Sources */,
+				AB7BF4AF2B495E860080A511 /* HomeProUIView.swift in Sources */,
 				ABCA2D962B47115300F76066 /* ExperienceViewModel .swift in Sources */,
 				AB9FDDCB2B476BA900C5EA21 /* LocalExperience.swift in Sources */,
 				AB9654EA2B46CB590076FB93 /* SystemDesign.swift in Sources */,
 				AB9654EC2B46CB620076FB93 /* AppImages.swift in Sources */,
+				AB7BF4AC2B495DFA0080A511 /* HomeProViewController.swift in Sources */,
 				AB96548E2B46C5F00076FB93 /* AppDelegate.swift in Sources */,
 				AB9654F02B46CB710076FB93 /* AppFontsUIKit.swift in Sources */,
 				AB9FDDC62B475CC600C5EA21 /* GeomtryReader + Extenstion.swift in Sources */,

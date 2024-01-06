@@ -53,7 +53,7 @@ enum LabelStyleUIKit {
             
         case .BodyXLargeBold: return UIFont(name: "Gotham-Bold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .bold)
 //        case .BodyXLargeSemiBold: return UIFont(name: "SF Pro Display Semibold", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .semibold)
-        case .BodyXLargeMedium: return UIFont(name: "SF Pro Display Medium", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .medium)
+        case .BodyXLargeMedium: return UIFont(name: "Gotham-Medium", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .medium)
 //        case .BodyXLargeRegular: return UIFont(name: "SF Pro Display Regular", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: .regular)
             
         case .BodyLargeBold: return UIFont(name: "Gotham-Bold", size: 16) ?? UIFont.systemFont(ofSize: 16, weight: .bold)
