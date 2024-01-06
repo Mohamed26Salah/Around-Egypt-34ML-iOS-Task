@@ -84,6 +84,8 @@ final class HomeUIView: UIView {
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
     
@@ -195,7 +197,7 @@ final class HomeUIView: UIView {
         //        label.applyLabelStyle(style: .Heading3, color: .black)
         return label
     }()
-    let recommendedExpCollectionView: UICollectionView = {
+    let recommendedExpCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         
@@ -208,13 +210,16 @@ final class HomeUIView: UIView {
     
     //MARK: - Most Recent Expereience View Layout -
     
-    let mostRecentExpCollectionView: UICollectionView = {
+    let mostRecentExpCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = false
         // collectionView.register(YourCustomCell.self, forCellWithReuseIdentifier: "YourCustomCellReuseIdentifier")
         return collectionView
     }()
@@ -342,6 +347,7 @@ extension HomeUIView {
             expereinceShowViewInsideScrollView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             expereinceShowViewInsideScrollView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
+//        scrollView.delegate = self
     }
     private func setupMainVerticalStackInsideScrollView() {
         expereinceShowViewInsideScrollView.addSubview(verticalMainExperienceStack)
@@ -418,13 +424,13 @@ extension HomeUIView {
         ])
     }
     private func setupRecommendedCollectionView() {
-        experienceHorizontalCollectionView.addSubview(recommendedExpCollectionView)
+        experienceHorizontalCollectionView.addSubview(recommendedExpCollection)
         
         NSLayoutConstraint.activate([
-            recommendedExpCollectionView.leadingAnchor.constraint(equalTo: experienceHorizontalCollectionView.leadingAnchor, constant: 15),
-            recommendedExpCollectionView.trailingAnchor.constraint(equalTo: experienceHorizontalCollectionView.trailingAnchor, constant: -15),
-            recommendedExpCollectionView.topAnchor.constraint(equalTo: experienceHorizontalCollectionView.topAnchor),
-            recommendedExpCollectionView.bottomAnchor.constraint(equalTo: experienceHorizontalCollectionView.bottomAnchor)
+            recommendedExpCollection.leadingAnchor.constraint(equalTo: experienceHorizontalCollectionView.leadingAnchor, constant: 15),
+            recommendedExpCollection.trailingAnchor.constraint(equalTo: experienceHorizontalCollectionView.trailingAnchor, constant: -15),
+            recommendedExpCollection.topAnchor.constraint(equalTo: experienceHorizontalCollectionView.topAnchor),
+            recommendedExpCollection.bottomAnchor.constraint(equalTo: experienceHorizontalCollectionView.bottomAnchor)
         ])
     }
     private func setupMostRecentLabel() {
@@ -443,15 +449,18 @@ extension HomeUIView {
 
 extension HomeUIView {
     private func setupMostRecetCollectionView() {
-        recentExperienceCollectionView.addSubview(mostRecentExpCollectionView)
+        recentExperienceCollectionView.addSubview(mostRecentExpCollection)
         NSLayoutConstraint.activate([
-            mostRecentExpCollectionView.leadingAnchor.constraint(equalTo: recentExperienceCollectionView.leadingAnchor, constant: 15),
-            mostRecentExpCollectionView.trailingAnchor.constraint(equalTo: recentExperienceCollectionView.trailingAnchor, constant: -15),
-            mostRecentExpCollectionView.topAnchor.constraint(equalTo: recentExperienceCollectionView.topAnchor),
-            mostRecentExpCollectionView.bottomAnchor.constraint(equalTo: recentExperienceCollectionView.bottomAnchor)
+            mostRecentExpCollection.leadingAnchor.constraint(equalTo: recentExperienceCollectionView.leadingAnchor, constant: 15),
+            mostRecentExpCollection.trailingAnchor.constraint(equalTo: recentExperienceCollectionView.trailingAnchor, constant: -15),
+            mostRecentExpCollection.topAnchor.constraint(equalTo: recentExperienceCollectionView.topAnchor),
+            mostRecentExpCollection.bottomAnchor.constraint(equalTo: recentExperienceCollectionView.bottomAnchor)
         ])
+//        mostRecentExpCollection.delegate = self
     }
 }
+
+
 
 struct UIViewPreview: UIViewRepresentable {
     let build: () -> UIView

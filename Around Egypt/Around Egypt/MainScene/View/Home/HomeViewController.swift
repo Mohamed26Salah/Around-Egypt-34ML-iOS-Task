@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     let homeUIView = HomeUIView()
     let experienceViewModel: ExperienceViewModel = ExperienceViewModel()
     let disposeBag = DisposeBag()
+    var isSwitching: Bool = false
     
     override func loadView() {
         self.view = homeUIView
@@ -31,7 +32,11 @@ class HomeViewController: UIViewController {
         bindDataToCollectionView()
         setupSearchBar()
         updateLikesCountFromExperienceDetails()
-        //            print(viewControllerView == self.view) // true
+        
+        homeUIView.mostRecentExpCollection.delegate = self
+        homeUIView.scrollView.delegate = self
+        
+        //print(viewControllerView == self.view) // true
     }
     
 }
@@ -49,34 +54,34 @@ extension HomeViewController {
 // MARK: - Collection View Manegement -
 extension HomeViewController {
     private func setupRecommenedExpCollectionView() {
-        homeUIView.recommendedExpCollectionView.register(ExperienceCollectionViewCell.nib(),
-                                                            forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
-        homeUIView.recommendedExpCollectionView.delegate = self
+        homeUIView.recommendedExpCollection.register(ExperienceCollectionViewCell.nib(),
+                                                     forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
+        homeUIView.recommendedExpCollection.delegate = self
     }
 }
 
 extension HomeViewController {
     private func setupMostRecentExpCollectionView() {
-        homeUIView.mostRecentExpCollectionView.register(ExperienceCollectionViewCell.nib(),
-                                                           forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
-        homeUIView.mostRecentExpCollectionView.delegate = self
+        homeUIView.mostRecentExpCollection.register(ExperienceCollectionViewCell.nib(),
+                                                    forCellWithReuseIdentifier: ExperienceCollectionViewCell.identifier)
+        homeUIView.mostRecentExpCollection.delegate = self
     }
     
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == homeUIView.recommendedExpCollectionView {
-            return CGSize(width: homeUIView.recommendedExpCollectionView.frame.width, height: 250)
-        } else if collectionView == homeUIView.mostRecentExpCollectionView {
-            return CGSize(width: homeUIView.mostRecentExpCollectionView.frame.width, height: 250)
+        if collectionView == homeUIView.recommendedExpCollection {
+            return CGSize(width: homeUIView.recommendedExpCollection.frame.width, height: 250)
+        } else if collectionView == homeUIView.mostRecentExpCollection {
+            return CGSize(width: homeUIView.mostRecentExpCollection.frame.width, height: 250)
         }
         return CGSize.zero
     }
 }
 
 
-// MARK: - Collection View Scroll (Recommened Expo) -
+// MARK: - Collection View Scroll (Horizontal) -
 
 extension HomeViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -90,10 +95,43 @@ extension HomeViewController: UIScrollViewDelegate {
     }
     
     private func centerCellOnScreen() {
-        let centerPoint = CGPoint(x: homeUIView.recommendedExpCollectionView.contentOffset.x + homeUIView.recommendedExpCollectionView.bounds.width / 2,
-                                  y: homeUIView.recommendedExpCollectionView.bounds.height / 2)
-        if let indexPath = homeUIView.recommendedExpCollectionView.indexPathForItem(at: centerPoint) {
-            homeUIView.recommendedExpCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        let centerPoint = CGPoint(x: homeUIView.recommendedExpCollection.contentOffset.x + homeUIView.recommendedExpCollection.bounds.width / 2,
+                                  y: homeUIView.recommendedExpCollection.bounds.height / 2)
+        if let indexPath = homeUIView.recommendedExpCollection.indexPathForItem(at: centerPoint) {
+            homeUIView.recommendedExpCollection.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+    }
+    // MARK: - Collection View Scroll (Vertical) -
+
+    private func updateScrolling() {
+        let collectionViewContentHeight = homeUIView.mostRecentExpCollection.collectionViewLayout.collectionViewContentSize.height
+        
+        // Adjust these values according to your desired scroll switching threshold
+        let thresholdValue: CGFloat = 400
+        let contentOffset = homeUIView.scrollView.contentOffset.y
+        
+        if  contentOffset >= thresholdValue && collectionViewContentHeight > homeUIView.mostRecentExpCollection.bounds.height {
+            homeUIView.scrollView.isScrollEnabled = false
+            homeUIView.mostRecentExpCollection.isScrollEnabled = true
+        } else {
+            homeUIView.scrollView.isScrollEnabled = true
+            homeUIView.mostRecentExpCollection.isScrollEnabled = false
+        }
+    }
+    
+    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == homeUIView.scrollView {
+            updateScrolling()
+        } else if let collectionView = scrollView as? UICollectionView, collectionView == homeUIView.mostRecentExpCollection {
+            if collectionView.contentOffset.y <= 0 {
+                homeUIView.scrollView.isScrollEnabled = true
+                collectionView.isScrollEnabled = false
+                
+                // Scroll the main scroll view to a position inside the threshold
+                let thresholdValue: CGFloat = 400
+                let insideThresholdOffset = CGPoint(x: homeUIView.scrollView.contentOffset.x, y: thresholdValue - 1)
+                homeUIView.scrollView.setContentOffset(insideThresholdOffset, animated: true)
+            }
         }
     }
 }
@@ -104,7 +142,7 @@ extension HomeViewController {
     func bindDataToTableView() {
         experienceViewModel.mostRecentExperinces
             .observe(on: MainScheduler.asyncInstance)
-            .bind(to: homeUIView.mostRecentExpCollectionView.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
+            .bind(to: homeUIView.mostRecentExpCollection.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
                 guard let self = self else {return}
                 experienceViewModel.checkNetworkConnection { success in
                     if success {
@@ -134,14 +172,14 @@ extension HomeViewController {
                 cell.likesButtonTapped = {
                     LocalDataManager.shared().likeExperience(experienceID: row.id)
                     self.experienceViewModel.likeAnExperience(experienceID: row.id)
-                    self.homeUIView.mostRecentExpCollectionView.reloadData()
-                    self.homeUIView.recommendedExpCollectionView.reloadData()
+                    self.homeUIView.mostRecentExpCollection.reloadData()
+                    self.homeUIView.recommendedExpCollection.reloadData()
                 }
                 cell.accessibilityIdentifier = "ExperienceCell_\(row.id)"
             }
             .disposed(by: disposeBag)
         
-        homeUIView.mostRecentExpCollectionView.rx.itemSelected
+        homeUIView.mostRecentExpCollection.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self else {
                     return
@@ -165,7 +203,7 @@ extension HomeViewController {
     func bindDataToCollectionView() {
         experienceViewModel.recommendedExperiences
             .observe(on: MainScheduler.asyncInstance)
-            .bind(to: homeUIView.recommendedExpCollectionView.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
+            .bind(to: homeUIView.recommendedExpCollection.rx.items(cellIdentifier: ExperienceCollectionViewCell.identifier, cellType: ExperienceCollectionViewCell.self)) { [weak self] _, row, cell in
                 guard let self = self else {return}
                 experienceViewModel.checkNetworkConnection { success in
                     if success {
@@ -195,14 +233,14 @@ extension HomeViewController {
                 cell.likesButtonTapped = {
                     LocalDataManager.shared().likeExperience(experienceID: row.id)
                     self.experienceViewModel.likeAnExperience(experienceID: row.id)
-                    self.homeUIView.recommendedExpCollectionView.reloadData()
-                    self.homeUIView.mostRecentExpCollectionView.reloadData()
+                    self.homeUIView.recommendedExpCollection.reloadData()
+                    self.homeUIView.mostRecentExpCollection.reloadData()
                 }
                 
             }
             .disposed(by: disposeBag)
         
-        homeUIView.recommendedExpCollectionView.rx.itemSelected
+        homeUIView.recommendedExpCollection.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self else {
                     return
@@ -279,8 +317,11 @@ extension HomeViewController {
     func updateLikesCountFromExperienceDetails() {
         experienceViewModel.updateLikeCount = { [weak self] in
             guard let self = self else {return}
-            self.homeUIView.recommendedExpCollectionView.reloadData()
-            self.homeUIView.mostRecentExpCollectionView.reloadData()
+            self.homeUIView.recommendedExpCollection.reloadData()
+            self.homeUIView.mostRecentExpCollection.reloadData()
         }
     }
 }
+
+
+

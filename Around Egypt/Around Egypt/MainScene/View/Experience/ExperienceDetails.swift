@@ -102,12 +102,6 @@ struct ExperienceDetails: View {
         .getWidth($width)
         .onAppear {
             isLiked = LocalDataManager.shared().isExperienceLiked(experienceID: experience.id)
-            for family in UIFont.familyNames {
-                print("Family: \(family)")
-                for name in UIFont.fontNames(forFamilyName: family) {
-                    print("      - \(name)")
-                }
-            }
         }
     }
     @ViewBuilder
